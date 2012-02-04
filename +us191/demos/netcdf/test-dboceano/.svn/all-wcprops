@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano
+END
+test-dboceano-ctd.cdl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-ctd.cdl
+END
+test-dboceano-ctd-conventions.nc
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-ctd-conventions.nc
+END
+test-dboceano-tsg-update.nc
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-tsg-update.nc
+END
+test-dboceano-tsg.nc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-tsg.nc
+END
+test-dboceano-tsg.cdl
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-tsg.cdl
+END
+test-dboceano-gosud.nc
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-gosud.nc
+END
+test-dboceano-gosud.cdl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-gosud.cdl
+END
+test-dboceano-gosud-conventions.nc
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-gosud-conventions.nc
+END
+test-dboceano-onset.nc
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-onset.nc
+END
+test-dboceano-ctd-update.nc
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-ctd-update.nc
+END
+test-dboceano-ctd.nc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-ctd.nc
+END
+test-dboceano-onset.cdl
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/us191/oceano/!svn/ver/608/trunk/matlab/us191/+us191/demos/netcdf/test-dboceano/test-dboceano-onset.cdl
+END

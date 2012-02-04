@@ -1,0 +1,713 @@
+netcdf test-dboceano-gosud {
+dimensions:
+	DAYD = 6 ;
+	DAYD_EXT = UNLIMITED ; // (0 currently)
+	NCOEF_CAL = 7 ;
+	NCOEF_LIN = 2 ;
+	STRING256 = 256 ;
+	STRING14 = 14 ;
+	STRING8 = 8 ;
+	STRING4 = 4 ;
+	N1 = 1 ;
+variables:
+	char REFERENCE_DATE_TIME(STRING14) ;
+		REFERENCE_DATE_TIME:long_name = "ORIGIN OF TIME" ;
+		REFERENCE_DATE_TIME:conventions = "yyyymmddhhmmss" ;
+		REFERENCE_DATE_TIME:comment = "Reference date for julian days origin" ;
+	char DATE(DAYD, STRING14) ;
+		DATE:long_name = "DATE OF MAIN INSTRUMENT MEASUREMENT" ;
+		DATE:conventions = "yyyymmddhhmmss" ;
+		DATE:comment = "This is the original data describing the date, it must not be lost" ;
+		DATE:coordinate = "DAYD" ;
+	char DATE_EXT(DAYD_EXT, STRING14) ;
+		DATE_EXT:long_name = "DATE OF EACH EXTERNAL DATA MEASUREMENT" ;
+		DATE_EXT:conventions = "yyyymmddhhmmss" ;
+		DATE_EXT:comment = "This is the original data describing the date, it must not be lost" ;
+		DATE_EXT:coordinate = "DAYD_EXT" ;
+	double DAYD(DAYD) ;
+		DAYD:long_name = "DECIMAL JULIAN DAY (UTC) OF EACH MEASUREMENT" ;
+		DAYD:standard_name = "time" ;
+		DAYD:units = "days since 1950/01/01 00:00:00" ;
+		DAYD:conventions = "Relative julian days with decimal part (as parts of the day)" ;
+		DAYD:valid_min = 0. ;
+		DAYD:valid_max = 36600. ;
+		DAYD:format = "%11.5f" ;
+		DAYD:epic_code = 601. ;
+		DAYD:axis = "T" ;
+		DAYD:comment = "Julian day of the measurement" ;
+		DAYD:coordinate = "DAYD" ;
+	double DAYD_EXT(DAYD_EXT) ;
+		DAYD_EXT:long_name = "DECIMAL JULIAN DAY (UTC) OF EXTERNAL DATA MEASUREMENT" ;
+		DAYD_EXT:standard_name = "time" ;
+		DAYD_EXT:units = "days since 1950/01/01 00:00:00" ;
+		DAYD_EXT:conventions = "Relative julian days with decimal part (as parts of the day)" ;
+		DAYD_EXT:valid_min = 0. ;
+		DAYD_EXT:valid_max = 36600. ;
+		DAYD_EXT:format = "%11.5f" ;
+		DAYD_EXT:epic_code = 601. ;
+		DAYD_EXT:axis = "T" ;
+		DAYD_EXT:comment = "Julian day of the measurement" ;
+		DAYD_EXT:coordinate = "DAYD_EXT" ;
+	float LATX(DAYD) ;
+		LATX:long_name = "LATITUDE OF EACH MEASUREMENT" ;
+		LATX:standard_name = "latitude" ;
+		LATX:units = "degree_north" ;
+		LATX:valid_min = -90.f ;
+		LATX:valid_max = 90.f ;
+		LATX:format = "%+8.4f" ;
+		LATX:_FillValue = 99999.f ;
+		LATX:epic_code = 500.f ;
+		LATX:axis = "Y" ;
+		LATX:comment = "Latitude of the measurement (decimal)" ;
+		LATX:coordinate = "DAYD" ;
+	float LATX_EXT(DAYD_EXT) ;
+		LATX_EXT:long_name = "LATITUDE OF EACH EXTERNAL DATA MEASUREMENT" ;
+		LATX_EXT:standard_name = "latitude" ;
+		LATX_EXT:units = "degree_north" ;
+		LATX_EXT:valid_min = -90.f ;
+		LATX_EXT:valid_max = 90.f ;
+		LATX_EXT:format = "%+8.4f" ;
+		LATX_EXT:_FillValue = 99999.f ;
+		LATX_EXT:epic_code = 500.f ;
+		LATX_EXT:axis = "Y" ;
+		LATX_EXT:comment = "Latitude of the measurement (decimal)" ;
+		LATX_EXT:coordinate = "DAYD_EXT" ;
+	float LONX(DAYD) ;
+		LONX:long_name = "LONGITUDE OF EACH MEASUREMENT" ;
+		LONX:standard_name = "longitude" ;
+		LONX:units = "degree_east" ;
+		LONX:valid_min = -180.f ;
+		LONX:valid_max = 180.f ;
+		LONX:format = "%+9.4f" ;
+		LONX:_FillValue = 99999.f ;
+		LONX:epic_code = 501.f ;
+		LONX:axis = "X" ;
+		LONX:comment = "Longitude of the measurement (decimal)" ;
+		LONX:coordinate = "DAYD" ;
+	float LONX_EXT(DAYD_EXT) ;
+		LONX_EXT:long_name = "LONGITUDE OF EACH EXTERNAL DATA MEASUREMENT" ;
+		LONX_EXT:standard_name = "longitude" ;
+		LONX_EXT:units = "degree_east" ;
+		LONX_EXT:valid_min = -180.f ;
+		LONX_EXT:valid_max = 180.f ;
+		LONX_EXT:format = "%+9.4f" ;
+		LONX_EXT:_FillValue = 99999.f ;
+		LONX_EXT:epic_code = 501.f ;
+		LONX_EXT:axis = "X" ;
+		LONX_EXT:comment = "Longitude of the measurement (decimal)" ;
+		LONX_EXT:coordinate = "DAYD_EXT" ;
+	byte POSITION_QC(DAYD) ;
+		POSITION_QC:long_name = "QUALITY FLAG OF POSITION" ;
+		POSITION_QC:valid_min = 0b ;
+		POSITION_QC:valid_max = 9b ;
+		POSITION_QC:format = "%1d" ;
+		POSITION_QC:comment = "Quality flag applied on position" ;
+		POSITION_QC:default_value = 0b ;
+		POSITION_QC:coordinate = "DAYD" ;
+	float SPDC(DAYD) ;
+		SPDC:long_name = "SHIP SPEED COMPUTED FROM NAVIGATION" ;
+		SPDC:units = "knots" ;
+		SPDC:valid_min = 0.f ;
+		SPDC:valid_max = 50.f ;
+		SPDC:format = "%6.1f" ;
+		SPDC:_FillValue = 99999.f ;
+		SPDC:resolution = 0.1f ;
+		SPDC:comment = "Ship speed from GPS (SOG - Speed Over Ground). If SOG not available, derived from last position" ;
+		SPDC:coordinate = "DAYD" ;
+	float PRES(DAYD) ;
+		PRES:long_name = "SEA PRESSURE IN TSG" ;
+		PRES:standard_name = "sea_water_pressure" ;
+		PRES:units = "decibar=10000 pascals" ;
+		PRES:valid_min = 0.f ;
+		PRES:valid_max = 10.f ;
+		PRES:format = "%6.1f" ;
+		PRES:_FillValue = 99999.f ;
+		PRES:resolution = 0.1f ;
+		PRES:comment = "Pressure inside TSG, this is an indication that pump is working properly" ;
+		PRES:coordinate = "DAYD" ;
+	float FLOW(DAYD) ;
+		FLOW:long_name = "MEASURING FLOW IN THE TSG INLET" ;
+		FLOW:units = "l/min" ;
+		FLOW:valid_min = 0.f ;
+		FLOW:valid_max = 100.f ;
+		FLOW:format = "%6.1f" ;
+		FLOW:_FillValue = 99999.f ;
+		FLOW:resolution = 0.1f ;
+		FLOW:comment = "Water pump discharge measurement in the TSG inlet, this is an indication that pump is working properly" ;
+	float CNDC(DAYD) ;
+		CNDC:long_name = "ELECTRICAL CONDUCTIVITY" ;
+		CNDC:standard_name = "sea_water_electrical_conductivity" ;
+		CNDC:units = "S/meter" ;
+		CNDC:valid_min = 0.f ;
+		CNDC:valid_max = 7.f ;
+		CNDC:format = "%6.3f" ;
+		CNDC:_FillValue = 99999.f ;
+		CNDC:resolution = 0.001f ;
+		CNDC:comment = "Conductivity measured by TSG. This data may have been reduced with a media (recommended) or a mean" ;
+		CNDC:coordinate = "DAYD" ;
+	float CNDC_STD(DAYD) ;
+		CNDC_STD:long_name = "CONDUCTIVITY STANDARD DEVIATION" ;
+		CNDC_STD:units = "S/meter" ;
+		CNDC_STD:valid_min = 0.f ;
+		CNDC_STD:valid_max = 7.f ;
+		CNDC_STD:format = "%6.3f" ;
+		CNDC_STD:_FillValue = 99999.f ;
+		CNDC_STD:resolution = 0.001f ;
+		CNDC_STD:comment = "Standard deviation of conductivity measured by TSG (CNDC)" ;
+		CNDC_STD:coordinate = "DAYD" ;
+	float CNDC_CAL(DAYD) ;
+		CNDC_CAL:long_name = "CONDUCTIVITY CALIBRATED" ;
+		CNDC_CAL:standard_name = "sea_water_electrical_conductivity" ;
+		CNDC_CAL:units = "S/meter" ;
+		CNDC_CAL:valid_min = 0.f ;
+		CNDC_CAL:valid_max = 7.f ;
+		CNDC_CAL:format = "%6.3f" ;
+		CNDC_CAL:_FillValue = 99999.f ;
+		CNDC_CAL:resolution = 0.001f ;
+		CNDC_CAL:comment = "Conductivity calibrated using linearization coefficient" ;
+		CNDC_CAL:coordinate = "DAYD" ;
+	float CNDC_FREQ(DAYD) ;
+		CNDC_FREQ:long_name = "SENSOR CONDUCTIVITY FREQUENCY" ;
+		CNDC_FREQ:units = "hz" ;
+		CNDC_FREQ:valid_min = 0.f ;
+		CNDC_FREQ:valid_max = 20000.f ;
+		CNDC_FREQ:format = "%9.3f" ;
+		CNDC_FREQ:_FillValue = 99999.f ;
+		CNDC_FREQ:resolution = 0.001f ;
+		CNDC_FREQ:comment = "Sensor conductivity frequency measured by TSG" ;
+		CNDC_FREQ:coordinate = "DAYD" ;
+	double CNDC_CALCOEF(NCOEF_CAL) ;
+		CNDC_CALCOEF:long_name = "CONDUCTIVITY CALIBRATION COEFFICIENTS" ;
+		CNDC_CALCOEF:_FillValue = 99999. ;
+		CNDC_CALCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char CNDC_CALCOEF_CONV(NCOEF_CAL, STRING8) ;
+		CNDC_CALCOEF_CONV:long_name = "CONDUCTIVITY CALIBRATION COEFFICIENTS CONVENTION" ;
+		CNDC_CALCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'a\',\'b\',\'c\',\'d\',\'f0\'" ;
+	double CNDC_LINCOEF(NCOEF_LIN) ;
+		CNDC_LINCOEF:long_name = "CONDUCTIVITY LINEAR DRIFT CORRECTION COEFFICIENTS" ;
+		CNDC_LINCOEF:_FillValue = 99999. ;
+		CNDC_LINCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char CNDC_LINCOEF_CONV(NCOEF_LIN, STRING8) ;
+		CNDC_LINCOEF_CONV:long_name = "CONDUCTIVITY LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION" ;
+		CNDC_LINCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'offset\',\'slope\'" ;
+	float SSJT(DAYD) ;
+		SSJT:long_name = "WATER JACKET TEMPERATURE" ;
+		SSJT:units = "degree_Celsius" ;
+		SSJT:valid_min = -1.5f ;
+		SSJT:valid_max = 38.f ;
+		SSJT:format = "%6.3f" ;
+		SSJT:_FillValue = 99999.f ;
+		SSJT:resolution = 0.001f ;
+		SSJT:comment = "Temperature within TSG or (Water Jacket Temperature). Warning, this is not ocean SST temperature. Is is used for salinity computation. The reduction applied is the same as for conductivity. Temperature is ITS-90" ;
+		SSJT:coordinate = "DAYD" ;
+	byte SSJT_QC(DAYD) ;
+		SSJT_QC:long_name = "WATER JACKET TEMPERATURE QUALITY FLAG" ;
+		SSJT_QC:valid_min = 0b ;
+		SSJT_QC:valid_max = 9b ;
+		SSJT_QC:format = "%1d" ;
+		SSJT_QC:comment = "Quality flag applied on water jacket temperature values" ;
+		SSJT_QC:default_value = 0b ;
+		SSJT_QC:coordinate = "DAYD" ;
+	float SSJT_STD(DAYD) ;
+		SSJT_STD:long_name = "WATER JACKET TEMPERATURE STANDARD DEVIATION" ;
+		SSJT_STD:units = "degree_Celsius" ;
+		SSJT_STD:valid_min = -1.5f ;
+		SSJT_STD:valid_max = 38.f ;
+		SSJT_STD:format = "%6.3f" ;
+		SSJT_STD:_FillValue = 99999.f ;
+		SSJT_STD:resolution = 0.001f ;
+		SSJT_STD:comment = "Water jacket temperature standard deviation for data wich have been reduced (with a mean or median)" ;
+		SSJT_STD:coordinate = "DAYD" ;
+	float SSJT_CAL(DAYD) ;
+		SSJT_CAL:long_name = "WATER JACKET TEMPERATURE CALIBRATED" ;
+		SSJT_CAL:units = "degree_Celsius" ;
+		SSJT_CAL:valid_min = -1.5f ;
+		SSJT_CAL:valid_max = 38.f ;
+		SSJT_CAL:format = "%6.3f" ;
+		SSJT_CAL:_FillValue = 99999.f ;
+		SSJT_CAL:resolution = 0.001f ;
+		SSJT_CAL:comment = "Water jacket temperature calibrated using linearization coefficients" ;
+		SSJT_CAL:coordinate = "DAYD" ;
+	float SSJT_FREQ(DAYD) ;
+		SSJT_FREQ:long_name = "WATER JACKET SENSOR TEMPERATURE FREQUENCY" ;
+		SSJT_FREQ:units = "hz" ;
+		SSJT_FREQ:valid_min = 0.f ;
+		SSJT_FREQ:valid_max = 20000.f ;
+		SSJT_FREQ:format = "%9.3f" ;
+		SSJT_FREQ:_FillValue = 99999.f ;
+		SSJT_FREQ:resolution = 0.001f ;
+		SSJT_FREQ:comment = "Frequency of water jacket temperature sensor " ;
+		SSJT_FREQ:coordinate = "DAYD" ;
+	double SSJT_CALCOEF(NCOEF_CAL) ;
+		SSJT_CALCOEF:long_name = "TEMPERATURE CALIBRATION COEFFICIENTS" ;
+		SSJT_CALCOEF:_FillValue = 99999. ;
+		SSJT_CALCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char SSJT_CALCOEF_CONV(NCOEF_CAL, STRING8) ;
+		SSJT_CALCOEF_CONV:long_name = "TEMPERATURE CALIBRATION COEFFICIENTS CONVENTION" ;
+		SSJT_CALCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'a\',\'b\',\'c\',\'d\',\'f0\'" ;
+	double SSJT_LINCOEF(NCOEF_LIN) ;
+		SSJT_LINCOEF:long_name = "TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS" ;
+		SSJT_LINCOEF:_FillValue = 99999. ;
+		SSJT_LINCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char SSJT_LINCOEF_CONV(NCOEF_LIN, STRING8) ;
+		SSJT_LINCOEF_CONV:long_name = "TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION" ;
+		SSJT_LINCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'offset\',\'slope\'" ;
+	float SSJT_ADJUSTED(DAYD) ;
+		SSJT_ADJUSTED:long_name = "WATER JACKET TEMPERATURE ADJUSTED" ;
+		SSJT_ADJUSTED:units = "degree_Celsius" ;
+		SSJT_ADJUSTED:valid_min = -1.5f ;
+		SSJT_ADJUSTED:valid_max = 38.f ;
+		SSJT_ADJUSTED:format = "%6.3f" ;
+		SSJT_ADJUSTED:_FillValue = 99999.f ;
+		SSJT_ADJUSTED:resolution = 0.001f ;
+		SSJT_ADJUSTED:comment = "Adjusted water jacket temperature with external data (ARGO,CTD,XBT,...)" ;
+		SSJT_ADJUSTED:coordinate = "DAYD" ;
+	float SSJT_ADJUSTED_ERROR(DAYD) ;
+		SSJT_ADJUSTED_ERROR:long_name = "ERROR ON ADJUSTED WATER JACKET TEMPERATURE" ;
+		SSJT_ADJUSTED_ERROR:units = "degree_Celsius" ;
+		SSJT_ADJUSTED_ERROR:valid_min = -1.5f ;
+		SSJT_ADJUSTED_ERROR:valid_max = 38.f ;
+		SSJT_ADJUSTED_ERROR:format = "%6.3f" ;
+		SSJT_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		SSJT_ADJUSTED_ERROR:resolution = 0.001f ;
+		SSJT_ADJUSTED_ERROR:comment = "Error on adjusted water jacket temperature with external data (ARGO,CTD, XBT,&)" ;
+		SSJT_ADJUSTED_ERROR:coordinate = "DAYD" ;
+	byte SSJT_ADJUSTED_QC(DAYD) ;
+		SSJT_ADJUSTED_QC:long_name = "WATER JACKET TEMPERATURE QUALITY FLAG" ;
+		SSJT_ADJUSTED_QC:valid_min = 0b ;
+		SSJT_ADJUSTED_QC:valid_max = 9b ;
+		SSJT_ADJUSTED_QC:format = "%1d" ;
+		SSJT_ADJUSTED_QC:comment = "Quality flag applied on adjusted water jacket temperature values" ;
+		SSJT_ADJUSTED_QC:default_value = 0b ;
+		SSJT_ADJUSTED_QC:coordinate = "DAYD" ;
+	char SSJT_ADJUSTED_HIST(STRING256) ;
+		SSJT_ADJUSTED_HIST:long_name = "ADJUSTED WATER JACKET TEMPERATURE PROCESSING HISTORY" ;
+		SSJT_ADJUSTED_HIST:comment = "Water jacket temperature inside TSG adjusted processing history" ;
+	float SSPS(DAYD) ;
+		SSPS:long_name = "SEA SURFACE SALINITY" ;
+		SSPS:standard_name = "sea_surface_salinity" ;
+		SSPS:valid_min = 0.f ;
+		SSPS:valid_max = 40.f ;
+		SSPS:format = "%6.3f" ;
+		SSPS:_FillValue = 99999.f ;
+		SSPS:resolution = 0.001f ;
+		SSPS:comment = "Sea Surface Salinity (SSS) deduced from conductivity and water jacket temperature. This is the Ocean surface salinity." ;
+		SSPS:coordinate = "DAYD" ;
+	byte SSPS_QC(DAYD) ;
+		SSPS_QC:long_name = "SEA SURFACE SALINITY QUALITY FLAG" ;
+		SSPS_QC:valid_min = 0b ;
+		SSPS_QC:valid_max = 9b ;
+		SSPS_QC:format = "%1d" ;
+		SSPS_QC:comment = "Quality flag applied on sea surface salinity values" ;
+		SSPS_QC:default_value = 0b ;
+		SSPS_QC:coordinate = "DAYD" ;
+	float SSPS_STD(DAYD) ;
+		SSPS_STD:long_name = "SEA SURFACE SALINITY STANDARD DEVIATION" ;
+		SSPS_STD:valid_min = 0.f ;
+		SSPS_STD:valid_max = 40.f ;
+		SSPS_STD:format = "%6.3f" ;
+		SSPS_STD:_FillValue = 99999.f ;
+		SSPS_STD:resolution = 0.001f ;
+		SSPS_STD:comment = "Standard deviation of sea surface salinity measured by TSG in case when CNDC_STD not available" ;
+		SSPS_STD:coordinate = "DAYD" ;
+	float SSPS_CAL(DAYD) ;
+		SSPS_CAL:long_name = "SEA SURFACE SALINITY CALIBRATED" ;
+		SSPS_CAL:standard_name = "sea_surface_salinity" ;
+		SSPS_CAL:valid_min = 0.f ;
+		SSPS_CAL:valid_max = 40.f ;
+		SSPS_CAL:format = "%6.3f" ;
+		SSPS_CAL:_FillValue = 99999.f ;
+		SSPS_CAL:comment = "Sea surface calibrated salinity deduced from conductivity and water jacket temperature" ;
+		SSPS_CAL:coordinate = "DAYD" ;
+	float SSPS_ADJUSTED(DAYD) ;
+		SSPS_ADJUSTED:long_name = "SEA SURFACE SALINITY ADJUSTED" ;
+		SSPS_ADJUSTED:standard_name = "sea_surface_salinity" ;
+		SSPS_ADJUSTED:valid_min = 0.f ;
+		SSPS_ADJUSTED:valid_max = 40.f ;
+		SSPS_ADJUSTED:format = "%6.3f" ;
+		SSPS_ADJUSTED:_FillValue = 99999.f ;
+		SSPS_ADJUSTED:resolution = 0.001f ;
+		SSPS_ADJUSTED:comment = "Sea surface salinity adjusted with external data (ARGO,CTD,XBT,...)" ;
+		SSPS_ADJUSTED:coordinate = "DAYD" ;
+	float SSPS_ADJUSTED_ERROR(DAYD) ;
+		SSPS_ADJUSTED_ERROR:long_name = "ERROR ON SEA SURFACE SALINITY ADJUSTED" ;
+		SSPS_ADJUSTED_ERROR:valid_min = 0.f ;
+		SSPS_ADJUSTED_ERROR:valid_max = 40.f ;
+		SSPS_ADJUSTED_ERROR:format = "%6.3f" ;
+		SSPS_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		SSPS_ADJUSTED_ERROR:comment = "Error on sea surface salinity adjusted with external data (ARGO,CTD,XBT,...)" ;
+		SSPS_ADJUSTED_ERROR:coordinate = "DAYD" ;
+	byte SSPS_ADJUSTED_QC(DAYD) ;
+		SSPS_ADJUSTED_QC:long_name = "ERROR ON SEA SURFACE SALINITY ADJUSTED QUALITY FLAG" ;
+		SSPS_ADJUSTED_QC:valid_min = 0b ;
+		SSPS_ADJUSTED_QC:valid_max = 9b ;
+		SSPS_ADJUSTED_QC:format = "%1d" ;
+		SSPS_ADJUSTED_QC:comment = "Quality flag applied on adjusted  sea surface salinity" ;
+		SSPS_ADJUSTED_QC:default_value = 0b ;
+		SSPS_ADJUSTED_QC:coordinate = "DAYD" ;
+	char SSPS_ADJUSTED_HIST(STRING256) ;
+		SSPS_ADJUSTED_HIST:long_name = "ADJUSTED SEA SURFACE SALINITY PROCESSING HISTORY" ;
+		SSPS_ADJUSTED_HIST:comment = "Sea surface salinity adjusted processing history" ;
+	float SSPS_DEPH(N1) ;
+		SSPS_DEPH:long_name = "NOMINAL DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT" ;
+		SSPS_DEPH:units = "meter" ;
+		SSPS_DEPH:valid_min = 0.f ;
+		SSPS_DEPH:valid_max = 100.f ;
+		SSPS_DEPH:format = "%6.3f" ;
+		SSPS_DEPH:_FillValue = 99999.f ;
+	float SSPS_DEPH_MIN(N1) ;
+		SSPS_DEPH_MIN:long_name = "MINIMUM DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT" ;
+		SSPS_DEPH_MIN:units = "meter" ;
+		SSPS_DEPH_MIN:valid_min = 0.f ;
+		SSPS_DEPH_MIN:valid_max = 100.f ;
+		SSPS_DEPH_MIN:format = "%6.3f" ;
+		SSPS_DEPH_MIN:_FillValue = 99999.f ;
+	float SSPS_DEPH_MAX(N1) ;
+		SSPS_DEPH_MAX:long_name = "MAXIMUM DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT" ;
+		SSPS_DEPH_MAX:units = "meter" ;
+		SSPS_DEPH_MAX:valid_min = 0.f ;
+		SSPS_DEPH_MAX:valid_max = 100.f ;
+		SSPS_DEPH_MAX:format = "%6.3f" ;
+		SSPS_DEPH_MAX:_FillValue = 99999.f ;
+	float SSTP(DAYD) ;
+		SSTP:long_name = "SEA SURFACE TEMPERATURE" ;
+		SSTP:standard_name = "sea_surface_temperature" ;
+		SSTP:units = "degree_Celsius" ;
+		SSTP:valid_min = -1.5f ;
+		SSTP:valid_max = 38.f ;
+		SSTP:format = "%6.3f" ;
+		SSTP:_FillValue = 99999.f ;
+		SSTP:resolution = 0.001f ;
+		SSTP:comment = "Sea Surface Temperature (SST) measured at intake with external instrument (TINT_TYPE, TINT_NUMBER). This is Ocean Temperature" ;
+		SSTP:coordinate = "DAYD" ;
+	byte SSTP_QC(DAYD) ;
+		SSTP_QC:long_name = "SEA SURFACE TEMPERATURE QUALITY FLAG" ;
+		SSTP_QC:valid_min = 0b ;
+		SSTP_QC:valid_max = 9b ;
+		SSTP_QC:format = "%1d" ;
+		SSTP_QC:comment = "Quality flag applied on sea surface temperature temperature values" ;
+		SSTP_QC:default_value = 0b ;
+		SSTP_QC:coordinate = "DAYD" ;
+	float SSTP_CAL(DAYD) ;
+		SSTP_CAL:long_name = "SEA SURFACE TEMPERATURE CALIBRATED" ;
+		SSTP_CAL:standard_name = "sea_surface_temperature" ;
+		SSTP_CAL:units = "degree_Celsius" ;
+		SSTP_CAL:valid_min = -1.5f ;
+		SSTP_CAL:valid_max = 38.f ;
+		SSTP_CAL:format = "%6.3f" ;
+		SSTP_CAL:_FillValue = 99999.f ;
+		SSTP_CAL:comment = "Sea surface temperature calibrated" ;
+		SSTP_CAL:coordinate = "DAYD" ;
+	float SSTP_FREQ(DAYD) ;
+		SSTP_FREQ:long_name = "SEA SURFACE TEMPERATURE FREQUENCY" ;
+		SSTP_FREQ:units = "hz" ;
+		SSTP_FREQ:valid_min = 0.f ;
+		SSTP_FREQ:valid_max = 20000.f ;
+		SSTP_FREQ:format = "%9.3f" ;
+		SSTP_FREQ:_FillValue = 99999.f ;
+		SSTP_FREQ:resolution = 0.001f ;
+		SSTP_FREQ:comment = "Frequency of external temperature sensor, used for SST measurement" ;
+		SSTP_FREQ:coordinate = "DAYD" ;
+	float SSTP_ADJUSTED(DAYD) ;
+		SSTP_ADJUSTED:long_name = "SEA SURFACE TEMPERATURE ADJUSTED" ;
+		SSTP_ADJUSTED:standard_name = "sea_surface_temperature" ;
+		SSTP_ADJUSTED:units = "degree_Celsius" ;
+		SSTP_ADJUSTED:valid_min = -1.5f ;
+		SSTP_ADJUSTED:valid_max = 38.f ;
+		SSTP_ADJUSTED:format = "%6.3f" ;
+		SSTP_ADJUSTED:_FillValue = 99999.f ;
+		SSTP_ADJUSTED:comment = "Sea surface adjusted temperature" ;
+		SSTP_ADJUSTED:coordinate = "DAYD" ;
+	float SSTP_ADJUSTED_ERROR(DAYD) ;
+		SSTP_ADJUSTED_ERROR:long_name = "ERROR ON SEA SURFACE TEMPERATURE ADJUSTED" ;
+		SSTP_ADJUSTED_ERROR:units = "degree_Celsius" ;
+		SSTP_ADJUSTED_ERROR:valid_min = -1.5f ;
+		SSTP_ADJUSTED_ERROR:valid_max = 38.f ;
+		SSTP_ADJUSTED_ERROR:format = "%6.3f" ;
+		SSTP_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		SSTP_ADJUSTED_ERROR:comment = "Error on sea surface adjusted temperature" ;
+		SSTP_ADJUSTED_ERROR:coordinate = "DAYD" ;
+	byte SSTP_ADJUSTED_QC(DAYD) ;
+		SSTP_ADJUSTED_QC:long_name = "SEA SURFACE TEMPERATURE ADJUSTED QUALITY FLAG" ;
+		SSTP_ADJUSTED_QC:valid_min = 0b ;
+		SSTP_ADJUSTED_QC:valid_max = 9b ;
+		SSTP_ADJUSTED_QC:format = "%1d" ;
+		SSTP_ADJUSTED_QC:comment = "Quality flag applied on sea surface adjusted Ocean temperature" ;
+		SSTP_ADJUSTED_QC:default_value = 0b ;
+		SSTP_ADJUSTED_QC:coordinate = "DAYD" ;
+	char SSTP_ADJUSTED_HIST(STRING256) ;
+		SSTP_ADJUSTED_HIST:long_name = "ADJUSTED SEA SURFACE TEMPERATURE PROCESSING HISTORY" ;
+		SSTP_ADJUSTED_HIST:comment = "Sea surface adjusted temperature processing history" ;
+	float SSTP_DEPH(N1) ;
+		SSTP_DEPH:long_name = "NOMINAL DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT" ;
+		SSTP_DEPH:units = "meter" ;
+		SSTP_DEPH:valid_min = 0.f ;
+		SSTP_DEPH:valid_max = 100.f ;
+		SSTP_DEPH:format = "%6.3f" ;
+		SSTP_DEPH:_FillValue = 99999.f ;
+	float SSTP_DEPH_MIN(N1) ;
+		SSTP_DEPH_MIN:long_name = "MINIMUM DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT" ;
+		SSTP_DEPH_MIN:units = "meter" ;
+		SSTP_DEPH_MIN:valid_min = 0.f ;
+		SSTP_DEPH_MIN:valid_max = 100.f ;
+		SSTP_DEPH_MIN:format = "%6.3f" ;
+		SSTP_DEPH_MIN:_FillValue = 99999.f ;
+	float SSTP_DEPH_MAX(N1) ;
+		SSTP_DEPH_MAX:long_name = "MAXIMUM DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT" ;
+		SSTP_DEPH_MAX:units = "meter" ;
+		SSTP_DEPH_MAX:valid_min = 0.f ;
+		SSTP_DEPH_MAX:valid_max = 100.f ;
+		SSTP_DEPH_MAX:format = "%6.3f" ;
+		SSTP_DEPH_MAX:_FillValue = 99999.f ;
+	double SSTP_CALCOEF(NCOEF_CAL) ;
+		SSTP_CALCOEF:long_name = "TEMPERATURE CALIBRATION COEFFICIENTS" ;
+		SSTP_CALCOEF:_FillValue = 99999. ;
+		SSTP_CALCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char SSTP_CALCOEF_CONV(NCOEF_CAL, STRING8) ;
+		SSTP_CALCOEF_CONV:long_name = "TEMPERATURE CALIBRATION COEFFICIENTS CONVENTION" ;
+		SSTP_CALCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'a\',\'b\',\'c\',\'d\',\'f0\'" ;
+	double SSTP_LINCOEF(NCOEF_LIN) ;
+		SSTP_LINCOEF:long_name = "TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS" ;
+		SSTP_LINCOEF:_FillValue = 99999. ;
+		SSTP_LINCOEF:comment = "Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME" ;
+	char SSTP_LINCOEF_CONV(NCOEF_LIN, STRING8) ;
+		SSTP_LINCOEF_CONV:long_name = "TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION" ;
+		SSTP_LINCOEF_CONV:comment = "Calibration coefficient convention is an enumeration of coefficients name, ex: \'date\',\'offset\',\'slope\'" ;
+	float SSTP_EXT(DAYD_EXT) ;
+		SSTP_EXT:long_name = "SEA SURFACE TEMPERATURE FROM EXTERNAL DATA" ;
+		SSTP_EXT:standard_name = "sea_surface_temperature" ;
+		SSTP_EXT:units = "degree_Celsius" ;
+		SSTP_EXT:valid_min = -1.5f ;
+		SSTP_EXT:valid_max = 38.f ;
+		SSTP_EXT:format = "%6.3f" ;
+		SSTP_EXT:_FillValue = 99999.f ;
+		SSTP_EXT:resolution = 0.001f ;
+		SSTP_EXT:comment = "Sea Surface Temperature (SST) from external data instrument (ARGO,CTD, XBT)" ;
+		SSTP_EXT:coordinate = "DAYD_EXT" ;
+	byte SSTP_EXT_QC(DAYD_EXT) ;
+		SSTP_EXT_QC:long_name = "SEA SURFACE TEMPERATURE FROM EXTERNAL DATA QUALITY FLAG" ;
+		SSTP_EXT_QC:valid_min = 0b ;
+		SSTP_EXT_QC:valid_max = 9b ;
+		SSTP_EXT_QC:format = "%1d" ;
+		SSTP_EXT_QC:comment = "Quality flag applied on external sea surface temperature data values" ;
+		SSTP_EXT_QC:default_value = 0b ;
+		SSTP_EXT_QC:coordinate = "DAYD_EXT" ;
+	char SSTP_EXT_TYPE(DAYD_EXT, STRING4) ;
+		SSTP_EXT_TYPE:long_name = "TYPE OF EXTERNAL SEA SURFACE TEMPERATURE  DATA ORIGIN" ;
+		SSTP_EXT_TYPE:comment = "ARGO,CTD,XBT,..." ;
+		SSTP_EXT_TYPE:coordinate = "DAYD_EXT" ;
+	float SSPS_EXT(DAYD_EXT) ;
+		SSPS_EXT:long_name = "SEA SURFACE SALINITY FROM EXTERNAL DATA" ;
+		SSPS_EXT:standard_name = "sea_surface_salinity" ;
+		SSPS_EXT:valid_min = 0.f ;
+		SSPS_EXT:valid_max = 40.f ;
+		SSPS_EXT:format = "%6.3f" ;
+		SSPS_EXT:_FillValue = 99999.f ;
+		SSPS_EXT:resolution = 0.001f ;
+		SSPS_EXT:comment = "Sea Surface Salinity (SSS) from external data instrument (WS,ARGO,CTD, XBT)" ;
+		SSPS_EXT:coordinate = "DAYD_EXT" ;
+	byte SSPS_EXT_QC(DAYD_EXT) ;
+		SSPS_EXT_QC:long_name = "SEA SURFACE SALINITY FROM EXTERNAL DATA QUALITY FLAG" ;
+		SSPS_EXT_QC:valid_min = 0b ;
+		SSPS_EXT_QC:valid_max = 9b ;
+		SSPS_EXT_QC:format = "%1d" ;
+		SSPS_EXT_QC:comment = "Quality flag applied on external sea surface salinity data values" ;
+		SSPS_EXT_QC:default_value = 0b ;
+		SSPS_EXT_QC:coordinate = "DAYD_EXT" ;
+	char SSPS_EXT_TYPE(DAYD_EXT, STRING4) ;
+		SSPS_EXT_TYPE:long_name = "TYPE OF EXTERNAL SEA SURFACE SALINITY DATA ORIGIN" ;
+		SSPS_EXT_TYPE:comment = "WS (Water Sample),ARGO,CTD,XBT,..." ;
+		SSPS_EXT_TYPE:coordinate = "DAYD_EXT" ;
+	char SSPS_EXT_ANALDATE(DAYD_EXT, STRING14) ;
+		SSPS_EXT_ANALDATE:long_name = "DATE OF WATER SAMPLE SURFACE SALINITY ANALYSIS" ;
+		SSPS_EXT_ANALDATE:conventions = "yyyymmddhhmmss" ;
+		SSPS_EXT_ANALDATE:comment = "Date of sea surface salinity water sample analysis" ;
+		SSPS_EXT_ANALDATE:coordinate = "DAYD_EXT" ;
+	char SSPS_EXT_BOTTLE(DAYD_EXT, STRING4) ;
+		SSPS_EXT_BOTTLE:long_name = "SEA SURFACE SALINITY BOTTLE NUMBER" ;
+		SSPS_EXT_BOTTLE:comment = "Number of sea surface salinity water sample" ;
+		SSPS_EXT_BOTTLE:coordinate = "DAYD_EXT" ;
+
+// global attributes:
+		:CYCLE_MESURE = "TOUCAN-TEST-GOSUD" ;
+		:PLATFORM_NAME = "TOUCAN" ;
+		:PROJECT_NAME = "ORE-SSS" ;
+		:SHIP_CALL_SIGN = "FNAV" ;
+		:SHIP_MMSI = "N/A" ;
+		:DATE_TSG = "N/A" ;
+		:TYPE_TSG = "SBE21" ;
+		:NUMBER_TSG = "N/A" ;
+		:DATE_TINT = "N/A" ;
+		:TYPE_TINT = "SBE38" ;
+		:NUMBER_TINT = "N/A" ;
+		:DATA_TYPE = "TRAJECTORY" ;
+		:DATA_MODE = "Delayed mode data" ;
+		:SAMPLING_PERIOD = "N/A" ;
+		:DATE_START = "20070718231500" ;
+		:DATE_END = "20070718234000" ;
+		:SOUTH_LATX = "49.0558" ;
+		:NORTH_LATX = "49.105" ;
+		:WEST_LONX = "-6.03915" ;
+		:EAST_LONX = "-5.88203" ;
+		:FORMAT_VERSION = "1.6" ;
+		:CONVENTIONS = "GOSUD 1.6, CF1.4" ;
+		:DATE_CREATION = "20090227143122" ;
+		:DATE_UPDATE = "20100423105145" ;
+		:DATA_RESTRICTIONS = "N/A" ;
+		:CITATION = "N/A" ;
+		:COMMENT = "N/A" ;
+		:PI_NAME = "Denis Diverres" ;
+		:DATA_CENTRE = "N/A" ;
+		:DATA_ACQUISITION = "IRD" ;
+		:PROCESSING_CENTRE = "ORE-SSS" ;
+		:PROCESSING_STATES = "0A" ;
+		:WS_TYPE = "NA" ;
+		:TYPE_POSITION = "GPS" ;
+data:
+
+ REFERENCE_DATE_TIME = "19500101000000" ;
+
+ DATE =
+  "20070718231500",
+  "20070718232000",
+  "20070718232500",
+  "20070718233000",
+  "20070718233500",
+  "20070718234000" ;
+
+ DAYD = 21017.96875, 21017.9722222222, 21017.9756944445, 21017.9791666666, 
+    21017.9826388889, 21017.9861111111 ;
+
+ LATX = 49.10502, 49.0957, 49.08632, 49.07667, 49.06672, 49.05582 ;
+
+ LONX = -5.882034, -5.913757, -5.945557, -5.977051, -6.008377, -6.039154 ;
+
+ POSITION_QC = -127, -127, -127, -127, -127, -127 ;
+
+ SPDC = 16.40259, 16.45715, 16.40806, 16.43372, 16.51649, -0 ;
+
+ PRES = _, _, _, _, _, _ ;
+
+ FLOW = _, _, _, _, _, _ ;
+
+ CNDC = 45.16, 45.263, 65.298, 45.238, 45.166, 45.123 ;
+
+ CNDC_STD = _, _, _, _, _, _ ;
+
+ CNDC_CAL = _, _, _, _, _, _ ;
+
+ CNDC_FREQ = _, _, _, _, _, _ ;
+
+ CNDC_CALCOEF = _, _, _, _, _, _, _ ;
+
+ CNDC_CALCOEF_CONV =
+  "DATE    ",
+  "G       ",
+  "H       ",
+  "I       ",
+  "J       ",
+  "CTCOR   ",
+  "CPCOR   " ;
+
+ CNDC_LINCOEF = 1, 0 ;
+
+ CNDC_LINCOEF_CONV =
+  "SLOPE   ",
+  "OFFSET  " ;
+
+ SSJT = 17.062, 17.184, 17.204, 17.149, 17.085, 17.042 ;
+
+ SSJT_QC = 0, 0, 0, 0, 0, 0 ;
+
+ SSJT_STD = _, _, _, _, _, _ ;
+
+ SSJT_CAL = _, _, _, _, _, _ ;
+
+ SSJT_FREQ = _, _, _, _, _, _ ;
+
+ SSJT_CALCOEF = _, _, _, _, _, _, _ ;
+
+ SSJT_CALCOEF_CONV =
+  "DATE    ",
+  "G       ",
+  "H       ",
+  "I       ",
+  "J       ",
+  "F0      ",
+  "        " ;
+
+ SSJT_LINCOEF = 1, 0 ;
+
+ SSJT_LINCOEF_CONV =
+  "SLOPE   ",
+  "OFFSET  " ;
+
+ SSJT_ADJUSTED = _, _, _, _, _, _ ;
+
+ SSJT_ADJUSTED_ERROR = _, _, _, _, _, _ ;
+
+ SSJT_ADJUSTED_QC = 0, 0, 0, 0, 0, 0 ;
+
+ SSJT_ADJUSTED_HIST = "" ;
+
+ SSPS = 35.175, 35.158, 55.17, 35.166, 35.16, 35.16 ;
+
+ SSPS_QC = 1, 1, 4, 1, 1, 1 ;
+
+ SSPS_STD = _, _, _, _, _, _ ;
+
+ SSPS_CAL = 35.176, 35.159, 45.171, 35.167, 35.161, 35.161 ;
+
+ SSPS_ADJUSTED = 35.177, 35.16, 45.172, 35.168, 35.162, 35.162 ;
+
+ SSPS_ADJUSTED_ERROR = 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ;
+
+ SSPS_ADJUSTED_QC = 5, 5, 4, 5, 5, 5 ;
+
+ SSPS_ADJUSTED_HIST = "" ;
+
+ SSPS_DEPH = 0 ;
+
+ SSPS_DEPH_MIN = _ ;
+
+ SSPS_DEPH_MAX = _ ;
+
+ SSTP = 16.962, 17.184, 17.204, 17.149, 17.085, 17.042 ;
+
+ SSTP_QC = 1, 1, 1, 1, 1, 1 ;
+
+ SSTP_CAL = 16.963, 17.185, 17.205, 17.15, 17.086, 17.043 ;
+
+ SSTP_FREQ = _, _, _, _, _, _ ;
+
+ SSTP_ADJUSTED = 16.964, 17.186, 17.206, 17.151, 17.087, 17.044 ;
+
+ SSTP_ADJUSTED_ERROR = 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 ;
+
+ SSTP_ADJUSTED_QC = 1, 1, 1, 1, 1, 1 ;
+
+ SSTP_ADJUSTED_HIST = "" ;
+
+ SSTP_DEPH = _ ;
+
+ SSTP_DEPH_MIN = _ ;
+
+ SSTP_DEPH_MAX = _ ;
+
+ SSTP_CALCOEF = _, _, _, _, _, _, _ ;
+
+ SSTP_CALCOEF_CONV =
+  "DATE    ",
+  "G       ",
+  "H       ",
+  "I       ",
+  "J       ",
+  "F0      ",
+  "        " ;
+
+ SSTP_LINCOEF = 1, 0 ;
+
+ SSTP_LINCOEF_CONV =
+  "SLOPE   ",
+  "OFFSET  " ;
+}

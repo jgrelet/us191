@@ -1,0 +1,87 @@
+netcdf varget {
+dimensions:
+	x = 4 ;
+	y = 6 ;
+variables:
+	double test_singleton ;
+	double test_1D(y) ;
+	short sst_mv(y, x) ;
+		sst_mv:missing_value = 24s ;
+	double test_2D(y, x) ;
+		test_2D:_FillValue = -1. ;
+		test_2D:missing_value = -1. ;
+	short temp(y, x) ;
+		temp:scale_factor = 1.8 ;
+		temp:add_offset = 32. ;
+	float test_2D_float(y, x) ;
+	double test_var3(x) ;
+	float a(y, x) ;
+		a:missing_value = NaNf ;
+	float b(y, x) ;
+		b:_FillValue = NaNf ;
+	int test_2D_int ;
+		test_2D_int:_FillValue = -1 ;
+	short test_2D_short ;
+
+// global attributes:
+		:history = "23-Sep-2011 12:33:36" ;
+data:
+
+ test_singleton = 3.14159 ;
+
+ test_1D = 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 ;
+
+ sst_mv =
+  1, 2, 3, 4,
+  5, 6, 7, 8,
+  9, 10, 11, 12,
+  13, 14, 15, 16,
+  17, 18, 19, 20,
+  21, 22, 23, 24 ;
+
+ test_2D =
+  0.1, 0.7, 1.3, 1.9,
+  0.2, 0.8, 1.4, 2,
+  0.3, 0.9, 1.5, 2.1,
+  0.4, 1, 1.6, 2.2,
+  0.5, 1.1, 1.7, 2.3,
+  0.6, 1.2, 1.8, 2.4 ;
+
+ temp =
+  0, 0, 0, 0,
+  10, 10, 10, 10,
+  20, 20, 20, 20,
+  30, 30, 30, 30,
+  40, 40, 40, 40,
+  50, 50, 50, 50 ;
+
+ test_2D_float =
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _,
+  _, _, _, _ ;
+
+ test_var3 = _, _, _, _ ;
+
+ a =
+  1, 2, 3, 4,
+  5, 6, 7, 8,
+  9, 10, 11, 12,
+  13, 14, 15, 16,
+  17, 18, 19, 20,
+  21, 22, 23, NaNf ;
+
+ b =
+  1, 2, 3, 4,
+  5, 6, 7, 8,
+  9, 10, 11, 12,
+  13, 14, 15, 16,
+  17, 18, 19, 20,
+  21, 22, 23, _ ;
+
+ test_2D_int = _ ;
+
+ test_2D_short = _ ;
+}

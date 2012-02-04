@@ -1,0 +1,136 @@
+% tsgqc_netcdf.csv:  0 members & 0 lines with data; VERSION = 0.000
+% $Id$
+%
+%
+$DIMENSIONS$
+#;key__;value;unlimited;#
+#;char;integer;logical;#
+#;DAYD;;0;#
+#;DAYD_EXT;;0;#
+#;N1;1;0;#
+#;NCOEF_CAL;7;0;#
+#;NCOEF_LIN;2;0;#
+#;STRING14;14;0;#
+#;STRING256;256;0;#
+#;STRING4;4;0;#
+#;STRING8;8;0;#
+%
+$VARIABLES$
+#;key__;dimension__;type__;long_name;standard_name;units;conventions;valid_min;valid_max;format;FillValue_;epic_code;axis;resolution;comment;default_value;coordinate;data__;#
+#;char;cell;char;char;char;char;char;double;double;char;double;double;char;double;char;double;char;float;#
+#;CNDC;'DAYD';float;ELECTRICAL CONDUCTIVITY;sea_water_electrical_conductivity;S/meter;;0;7;%5.3lf;99999;;;0.001;Conductivity measured by TSG. This data may have been reduced with a media (recommended) or a mean;;DAYD;;#
+#;CNDC_CAL;'DAYD';float;CONDUCTIVITY CALIBRATED;;S/meter;;0;7;%5.3lf;99999;;;0.0001;Conductivity calibrated using linearization coefficient;;DAYD;;#
+#;CNDC_CALCOEF;'NCOEF_CAL';double;CONDUCTIVITY CALIBRATION COEFFICIENTS;;;;;;;999999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;CNDC_CALCOEF_CONV;'NCOEF_CAL','STRING8';char;CONDUCTIVITY CALIBRATION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','a','b','c','d','f0';;;;#
+#;CNDC_FREQ;'DAYD';float;SENSOR CONDUCTIVITY FREQUENCY;;hz;;0;20000;%9.3lf;99999;;;0.0001;Sensor conductivity frequency measured by TSG;;DAYD;;#
+#;CNDC_LINCOEF;'NCOEF_LIN';double;CONDUCTIVITY LINEAR DRIFT CORRECTION COEFFICIENTS;;;slope,offset;;;;99999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;CNDC_LINCOEF_CONV;'NCOEF_LIN','STRING8';char;CONDUCTIVITY LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','offset','slope';;;;#
+#;CNDC_STD;'DAYD';float;CONDUCTIVITY STANDARD DEVIATION;;S/meter;;0;7;%5.3lf;99999;;;0.0001;Standard deviation of conductivity measured by TSG (CNDC);;DAYD;;#
+#;DATE;'DAYD','STRING14';char;DATE OF MAINS INSTRUMENT MEASUREMENT;;;yyyymmddhhmmss;;;;;;;;This is the original data describing the date, it must not be lost;;DAYD;;#
+#;DATE_EXT;'DAYD_EXT','STRING14';char;DATE OF EACH EXTERNAL DATA MEASUREMENT;;;yyyymmddhhmmss;;;;;;;;This is the original data describing the date, it must not be lost;;DAYD_EXT;;#
+#;DAYD;'DAYD';double;DECIMAL JULIAN DAY (UTC) OF EACH MEASUREMENT;time;days since 1950/01/01 00:00:00;Relative julian days with decimal part (as parts of the day);0;36600;%9.5lf;;601;;;Julian day of the measurement;;DAYD;;#
+#;DAYD_EXT;'DAYD_EXT';double;DECIMAL JULIAN DAY (UTC) OF EXTERNAL DATA MEASUREMENT;time;days since 1950/01/01 00:00:00;Relative julian days with decimal part (as parts of the day);0;36600;%9.5lf;;601;;;Julian day of the measurement;;DAYD_EXT;;#
+#;LATX;'DAYD';float;LATITUDE OF EACH MEASUREMENT;latitude;degree_north;;-90;90;%+8.4lf;99999;500;;;Latitude of the measurement (decimal);;DAYD;;#
+#;LATX_EXT;'DAYD_EXT';float;LATITUDE OF EACH EXTERNAL DATA MEASUREMENT;latitude;degree_north;;-90;90;%+8.4lf;99999;500;;;Latitude of the measurement (decimal);;DAYD_EXT;;#
+#;LONX;'DAYD';float;LONGITUDE OF EACH MEASUREMENT;longitude;degree_east;;-180;180;%+9.4lf;99999;501;;;Longitude of the measurement (decimal);;DAYD;;#
+#;LONX_EXT;'DAYD_EXT';float;LONGITUDE OF EACH EXTERNAL DATA MEASUREMENT;longitude;degree_east;;-180;180;%+9.4lf;99999;501;;;Longitude of the measuremen (decimal)t;;DAYD_EXT;;#
+#;POSITION_QC;'DAYD';byte;QUALITY FLAG OF POSITION;;;;0;9;%1d;;;;;Quality flag applied on position;0;DAYD;;#
+#;PRES;'DAYD';float;SEA PRESSURE IN TSG;sea_water_pressure;decibar=10000 pascals;;0;10;%6.1lf;99999;;;0.1;Pressure inside TSG, this is an indication that pump is working properly;;DAYD;;#
+#;REFERENCE_DATE_TIME;'STRING14';char;ORIGIN OF TIME;;;yyyymmddhhmmss;;;;;;;;Reference date for julian days origin;;;;#
+#;SPDC;'DAYD';float;SHIP SPEED COMPUTED FROM NAVIGATION;;knots;;0;50;%6.3lf;99999;;;0.1;Ship speed from GPS (SOG). If SOG not available, derived from last position;;DAYD;;#
+#;SSJT;'DAYD';float;WATER JACKET TEMPERATURE;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;Temperature within TSG or (Water Jacket Temperature). Warning, this is not ocean SST temperature. Is is used for salinity computation. The reduction applied is the same as for conductivity. Temperature scale must be specified (T64 or T90);;DAYD;;#
+#;SSJT_ADJUSTED;'DAYD';float;WATER JACKET TEMPERATURE ADJUSTED;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;Adjusted SSJT with external data (CTD,ARGO,XBT,...);;DAYD;;#
+#;SSJT_ADJUSTED_ERROR;'DAYD';float;ERROR ON ADJUSTED WATER JACKET TEMPERATURE;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;;;DAYD;;#
+#;SSJT_ADJUSTED_HIST;'STRING256';char;ADJUSTED WATER JACKET TEMPERATURE PROCESSING HISTORY;;;;;;;;;;;Water jacket temperature inside TSG adjusted processing history;;;;#
+#;SSJT_ADJUSTED_QC;'DAYD';byte;WATER JACKET TEMPERATURE QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on adjusted SSJT;0;DAYD;;#
+#;SSJT_CAL;'DAYD';float;WATER JACKET TEMPERATURE CALIBRATED;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;Water jacket temperature within TSG calibrated using linearization coefficients;;DAYD;;#
+#;SSJT_CALCOEF;'NCOEF_CAL';double;TEMPERATURE CALIBRATION COEFFICIENTS;;;;;;;99999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;SSJT_CALCOEF_CONV;'NCOEF_CAL','STRING8';char;TEMPERATURE CALIBRATION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','a','b','c','d','f0';;;;#
+#;SSJT_FREQ;'DAYD';float;WATER JACKET SENSOR TEMPERATURE FREQUENCY;;hz;;0;20000;%9.3lf;99999;;;0.001;Frequency of temperature sensor inside TSG (Water Jacket Temperature);;DAYD;;#
+#;SSJT_LINCOEF;'NCOEF_LIN';double;TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS;;;;;;;999999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;SSJT_LINCOEF_CONV;'NCOEF_LIN','STRING8';char;TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','offset','slope';;;;#
+#;SSJT_QC;'DAYD';byte;WATER JACKET TEMPERATURE QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on SSJT temperature values;0;DAYD;;#
+#;SSJT_STD;'DAYD';float;WATER JACKET TEMPERATURE STANDARD DEVIATION;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;SSJT, Temperature within TSG standard deviation for data wich have been reduced (with a mean or median);;DAYD;;#
+#;SSPS;'DAYD';float;SEA SURFACE SALINITY;sea_surface_salinity;;;0;40;%6.3lf;99999;;;0.001;Ocean salinity deduced from conductivity and water jacket temperature;;DAYD;;#
+#;SSPS_ADJUSTED;'DAYD';float;SEA SURFACE SALINITY ADJUSTED;;;;0;40;%6.3lf;99999;;;0.001;sea surface adjusted Ocean salinity deduced fron conductivity and jacket tsg temperature;;DAYD;;#
+#;SSPS_ADJUSTED_ERROR;'DAYD';float;ERROR ON SEA SURFACE SALINITY ADJUSTED;;;;0;40;%6.3lf;99999;;;;Error on adjusted sea surface salinity deduced fron conductivity and jacket tsg temperature;;DAYD;;#
+#;SSPS_ADJUSTED_HIST;'STRING256';char;ADJUSTED SEA SURFACE SALINITY PROCESSING HISTORY;;;;;;;;;;;sea surface salinity adjusted processing history;;;;#
+#;SSPS_ADJUSTED_QC;'DAYD';byte;ERROR ON SEA SURFACE SALINITY ADJUSTED QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on adjusted Ocean salinity deduced fron conductivity and jacket tsg temperature;0;DAYD;;#
+#;SSPS_CAL;'DAYD';float;SEA SURFACE SALINITY CALIBRATED;;;;0;40;%6.3lf;99999;;;;sea surface calibrated Ocean salinity deduced fron conductivity and jacket tsg temperature;;DAYD;;#
+#;SSPS_DEPH;'N1';float;NOMINAL DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSPS_DEPH_MAX;'N1';float;MAXIMUM DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSPS_DEPH_MIN;'N1';float;MINIMUM DEPTH OF WATER INTAKE FOR SALINITY MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSPS_EXT;'DAYD_EXT';float;SEA SURFACE SALINITY FROM EXTERNAL INSTRUMENT;sea_surface_salinity;;;0;40;%6.3lf;99999;;;0.001;Sea surface salinity from external instrument;;DAYD_EXT;;#
+#;SSPS_EXT_ANALDATE;'DAYD_EXT','STRING14';char;DATE OF WATER SAMPLE SURFACE SALINITY ANALYSIS;;;yyyymmddhhmmss;;;;;;;;Date of sea surface salinity water sample analysis;;DAYD_EXT;;#
+#;SSPS_EXT_BOTTLE;'DAYD_EXT','STRING4';char;SEA SURFACE SALINITY BOTTLE NUMBER;;;;;;;;;;;Number of sea surface salinity water sample;;DAYD_EXT;;#
+#;SSPS_EXT_QC;'DAYD_EXT';byte;SEA SURFACE SALINITY QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on salinity values from external instrument;0;DAYD_EXT;;#
+#;SSPS_EXT_TYPE;'DAYD_EXT','STRING4';char;TYPE OF EXTERNAL DATA ORIGIN;;;;;;;;;;;WS,CTD,ARGO,XBT,...;;DAYD_EXT;;#
+#;SSPS_QC;'DAYD';byte;SEA SURFACE SALINITY QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on salinity values;0;DAYD;;#
+#;SSTP;'DAYD';float;SEA SURFACE TEMPERATURE;sea_surface_temperature;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;Sea Surface Temperature (SST) measure at intake with external instrument. This is ocean Temperature;;DAYD;;#
+#;SSTP_ADJUSTED;'DAYD';float;SEA SURFACE TEMPERATURE ADJUSTED;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;;sea surface adjusted Ocean temperature;;DAYD;;#
+#;SSTP_ADJUSTED_ERROR;'DAYD';float;ERROR ON SEA SURFACE TEMPERATURE ADJUSTED;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;;Error on sea surface adjusted Ocean temperature;;DAYD;;#
+#;SSTP_ADJUSTED_HIST;'STRING256';char;ADJUSTED SEA SURFACE TEMPERATURE PROCESSING HISTORY;;;;;;;;;;;sea surface adjusted Ocean temperature processing history;;;;#
+#;SSTP_ADJUSTED_QC;'DAYD';byte;SEA SURFACE TEMPERATURE ADJUSTED QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on sea surface adjusted Ocean temperature;0;DAYD;;#
+#;SSTP_CAL;'DAYD';float;SEA SURFACE TEMPERATURE CALIBRATED;;degree_Celsius;;-1.5;38;%6.3lf;99999;;;;Sea Surface Temperature Calibrated;;DAYD;;#
+#;SSTP_CALCOEF;'NCOEF_CAL';double;TEMPERATURE CALIBRATION COEFFICIENTS;;;;;;;99999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;SSTP_CALCOEF_CONV;'NCOEF_CAL','STRING8';char;TEMPERATURE CALIBRATION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','a','b','c','d','f0';;;;#
+#;SSTP_DEPH;'N1';float;NOMINAL DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSTP_DEPH_MAX;'N1';float;MAXIMUM DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSTP_DEPH_MIN;'N1';float;MINIMUM DEPTH OF WATER INTAKE FOR TEMPERATURE MEASUREMENT;;meter;;0;100;%6.3lf;99999;;;;;;;;#
+#;SSTP_EXT;'DAYD_EXT';float;SEA SURFACE TEMPERATURE FROM EXTERNAL DATA;sea_surface_temperature;degree_Celsius;;-1.5;38;%6.3lf;99999;;;0.001;Sea Surface Temperature (SST) from external data instrument;;DAYD_EXT;;#
+#;SSTP_EXT_QC;'DAYD_EXT';byte;SEA SURFACE TEMPERATURE QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on external temperature data values;0;DAYD_EXT;;#
+#;SSTP_EXT_TYPE;'DAYD_EXT','STRING4';char;SEA SURFACE TEMPERATURE EXTERNAL INSTRUMENT TYPE;;;;;;;;;;;CTD,ARGO,XBT,...;;DAYD_EXT;;#
+#;SSTP_FREQ;'DAYD';float;SEA SURFACE TEMPERATURE FREQUENCY;;hz;;0;20000;%9.3lf;99999;;;0.001;Frequency of external temperature sensor, used for SST measurement;;DAYD;;#
+#;SSTP_LINCOEF;'NCOEF_LIN';double;TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS;;;;;;;99999;;;;Calibration coefficients are real value, date is in julian day from REFERENCE_DATE_TIME;;;;#
+#;SSTP_LINCOEF_CONV;'NCOEF_LIN','STRING8';char;TEMPERATURE LINEAR DRIFT CORRECTION COEFFICIENTS CONVENTION;;;;;;;NaN;;;;Calibration coefficient convention is an enumeration of coefficients name, ex: 'date','offset','slope';;;;#
+#;SSTP_QC;'DAYD';byte;SEA SURFACE TEMPERATURE QUALITY FLAG;;;;0;9;%1d;;;;;Quality flag applied on SSTP temperature values;0;DAYD;;#
+%
+$ATTRIBUTES$
+#;key__;name;conventions;uicontrolType;string;value;length;height;horizontalAlignment;comment;#
+#;char;char;char;char;char;float;float;float;char;char;#
+#;CITATION;CITATION:;;edit;;;;;right;This citation should be used for publications;#
+#;COMMENT;COMMENT:;;edit;;;;;right;;#
+#;CONVENTION;CONVENTION:;;popupmenu;CF 1.4;1;0.1;0.02;right;NetCDF file format conventions;#
+#;CYCLE_MESURE;CYCLE MESURE:;;edit;;;;;right;Cruise or travel name;#
+#;DATA_ACQUISITION;DATA ACQUISITION:;;popupmenu;IRD|GENAVIR|SHOM|CNRS;1;0.1;0.02;right;Acquisition data centre, ex: SHOM,IRD,GENAVIR,CNRS,...;#
+#;DATA_CENTRE;DATA CENTRE:;;edit;;;;;right;Code for data center (2 char);#
+#;DATA_MODE;DATA MODE:;;popupmenu;Delayed mode data|Real time data;1;0.1;0.02;right;Indicate if the file contains real time or delayed mode data;#
+#;DATA_RESTRICTIONS;DATA RESTRICTIONS:;;edit;NONE;;;;right;Restriction on use for these data;#
+#;DATA_TYPE;DATA TYPE:;;popupmenu;TRAJECTORY|PROFIL|TIME_SERIE;1;;;right;Describe data type contained in file, eg: TRAJECTORY, PROFIL or TIME_SERIE;#
+#;DATE_CREATION;DATE CREATION:;yyyymmddhhmnss;edit;;;;;right;Date and time of file creation, format: YYYYMMDDHHMISS;#
+#;DATE_END;DATE END:;yyyymmddhhmnss;edit;;;;;right;Date of last measurements;#
+#;DATE_START;DATE_START:;yyyymmddhhmnss;edit;;;;;right;Date of first measurements;#
+#;DATE_TSG;INSTALL DATE;;edit;;;;;right;TSG installation date;#
+#;DATE_UPDATE;DATE UPDATE:;yyyymmddhhmnss;edit;;;;;right;Date and time of file update, format: YYYYMMDDHHMISS;#
+#;EAST_LONX;EAST LONX:;;edit;;;;;right;East limit of measurements;#
+#;FORMAT_VERSION;FORMAT VERSION:;;popupmenu;1.6;1;0.1;0.02;right;File format version;#
+#;NORTH_LATX;NORTH LATX:;;edit;;;;;right;North limit of measurements;#
+#;NUMBER_TINT;NUMBER TINT:;;edit;;;;;right;External temperature sensor serial number;#
+#;NUMBER_TSG;NUMBER TSG:;;edit;;;;;right;TSG serial number;#
+#;PI_NAME;PI NAME:;;popupmenu;IRD-BREST|IRD-NOUMEA|GENAVIR|SHOM|CNRS;1;0.1;0.02;right;Name of principal investigator in charge of the TSG, ex: IRD or GENAVIR;#
+#;PLATFORM_NAME;PLATFORM NAME:;;edit;;;;;right;Ship name;#
+#;PROCESSING_CENTRE;PROCESSING CENTRE:;;popupmenu;ORE-SSS|CORIOLIS/IRD|CORIOLIS/SISMER;1;0.1;0.02;right;Processing data centre, ex: ORE-SSS,CORIOLIS,SISMER,...;#
+#;PROCESSING_STATES;PROCESSING STATES:;;popupmenu;0A|1A|2B|2B+|2C|2C+|3B;1;0.1;0.02;right;0A: DONNEE BRUTE|1A: DONNEE LOCALISEE;#
+#;PROJECT_NAME;PROJECT NAME:;;edit;;;;;right;Name of project which operates the TSG line, ex: ORE-SSS;#
+#;SAMPLING_PERIOD;SAMPLING PERIOD:;;edit;300;;0.050000001;;right;Sampling period in seconds: 6 to 3600;#
+#;SHIP_CALL_SIGN;SHIP CALL SIGN:;;edit;;;;;right;Ship call sign;#
+#;SHIP_MMSI;SHIP MMSI:;;edit;;;;;right;Ship MMSI (ASN) number;#
+#;SOUTH_LATX;SOUTH LATX:;;edit;;;;;right;South limit of measurements;#
+#;TYPE_TINT;TYPE TINT:;;popupmenu;SBE38|SBE3S|UNKNO|NA;1;0.1;0.02;right;External sea surface temperature sensor;#
+#;TYPE_TSG;TYPE TSG:;;popupmenu;SBE21|SBE45|UNKNO;1;0.1;0.02;right;Thermosalinograph model number;#
+#;WEST_LONX;WEST LONX:;;edit;;;;;right;West limit of measurements;#
+#;WS_TYPE;WATER SAMPLE TYPE:;;popupmenu;OSIL|UNKNO|NA;3;0.1;0.02;right;Water sample: NA, Not Available;#
+%
+$QUALITY$
+#;key__;label;code;color;state;#
+#;char;char;integer;char;char;#
+#;BAD;Bad;4;r;on;#
+#;GOOD;Good;1;b;on;#
+#;HARBOUR;Harbour;6;c;on;#
+#;INTERPOLATED_VALUE;Interpolated value;8;b;off;#
+#;MISSING_VALUE;Missing value;9;k;off;#
+#;NOT_USED;Not used;7;w;off;#
+#;NO_CONTROL;No control;0;k;on;#
+#;PROBABLY_BAD;Probably bad;3;m;on;#
+#;PROBABLY_GOOD;Probably Good;2;g;on;#
+#;VALUE_CHANGED;Value changed;5;c;off;#

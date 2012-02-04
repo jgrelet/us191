@@ -1,0 +1,503 @@
+netcdf test-dboceano-ctd {
+dimensions:
+	TIME = 3 ;
+	LEVEL = 13 ;
+	LATITUDE = 3 ;
+	LONGITUDE = 3 ;
+	POSITION = 3 ;
+	STRING256 = 256 ;
+	STRING14 = 14 ;
+	STRING8 = 8 ;
+	STRING4 = 4 ;
+	N1 = 1 ;
+variables:
+	char REFERENCE_DATE_TIME(STRING14) ;
+		REFERENCE_DATE_TIME:long_name = "ORIGIN OF TIME" ;
+		REFERENCE_DATE_TIME:conventions = "yyyymmddHHMMSS" ;
+		REFERENCE_DATE_TIME:comment = "Reference date for julian days origin" ;
+	char DATE(TIME, STRING14) ;
+		DATE:long_name = "DATE OF MAINS INSTRUMENT MEASUREMENT" ;
+		DATE:conventions = "yyyymmddHHMMSS" ;
+		DATE:axis = "T" ;
+		DATE:comment = "This is the original data describing the date, it must not be lost" ;
+		DATE:coordinate = "TIME" ;
+	double TIME(TIME) ;
+		TIME:long_name = "DECIMAL JULIAN DAY (UTC) OF EACH MEASUREMENT" ;
+		TIME:standard_name = "time" ;
+		TIME:units = "days since 1950-01-01T00:00:00Z" ;
+		TIME:conventions = "Relative julian days with decimal part (as parts of the day) from REFERENCE_DATE_TIME" ;
+		TIME:valid_min = 0. ;
+		TIME:valid_max = 90000. ;
+		TIME:format = "%9.5lf" ;
+		TIME:epic_code = 601. ;
+		TIME:axis = "T" ;
+		TIME:comment = "Julian day of the measurement" ;
+		TIME:coordinate = "TIME" ;
+	byte TIME_QC(TIME) ;
+		TIME_QC:long_name = "QUALITY FLAG OF TIME" ;
+		TIME_QC:conventions = "OceanSITES reference table 2" ;
+		TIME_QC:valid_min = 0b ;
+		TIME_QC:valid_max = 9b ;
+		TIME_QC:format = "%1d" ;
+		TIME_QC:comment = "Quality flag for each TIME value." ;
+		TIME_QC:default_value = 0b ;
+		TIME_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		TIME_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float LATITUDE(LATITUDE) ;
+		LATITUDE:long_name = "LATITUDE OF THE MEASUREMENT" ;
+		LATITUDE:standard_name = "latitude" ;
+		LATITUDE:units = "degree_north" ;
+		LATITUDE:valid_min = -90.f ;
+		LATITUDE:valid_max = 90.f ;
+		LATITUDE:format = "%+8.4lf" ;
+		LATITUDE:_FillValue = 99999.f ;
+		LATITUDE:epic_code = 500.f ;
+		LATITUDE:axis = "Y" ;
+		LATITUDE:comment = "Latitude of the measurement (decimal)" ;
+		LATITUDE:coordinate = "LATITUDE" ;
+	float LONGITUDE(LONGITUDE) ;
+		LONGITUDE:long_name = "LONGITUDE OF THE MEASUREMENT" ;
+		LONGITUDE:standard_name = "longitude" ;
+		LONGITUDE:units = "degree_east" ;
+		LONGITUDE:valid_min = -180.f ;
+		LONGITUDE:valid_max = 180.f ;
+		LONGITUDE:format = "%+9.4lf" ;
+		LONGITUDE:_FillValue = 99999.f ;
+		LONGITUDE:epic_code = 501.f ;
+		LONGITUDE:axis = "X" ;
+		LONGITUDE:comment = "Longitude of the measurement (decimal)" ;
+		LONGITUDE:coordinate = "LONGITUDE" ;
+	byte POSITION_QC(POSITION) ;
+		POSITION_QC:long_name = "QUALITY FLAG OF POSITION" ;
+		POSITION_QC:conventions = "OceanSITES reference table 2" ;
+		POSITION_QC:valid_min = 0b ;
+		POSITION_QC:valid_max = 9b ;
+		POSITION_QC:format = "%1d" ;
+		POSITION_QC:comment = "Quality flag for each LATITUDE and LONGITUDE value." ;
+		POSITION_QC:default_value = 0b ;
+		POSITION_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		POSITION_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float TEMP(TIME, LEVEL) ;
+		TEMP:long_name = "SEA WATER TEMPERATURE" ;
+		TEMP:standard_name = "sea_water_temperature" ;
+		TEMP:units = "degree_Celsius" ;
+		TEMP:valid_min = -1.5f ;
+		TEMP:valid_max = 38.f ;
+		TEMP:format = "%6.3lf" ;
+		TEMP:_FillValue = 99999.f ;
+		TEMP:resolution = 0.001f ;
+		TEMP:comment = "Ocean temperature" ;
+		TEMP:coordinate = "TIME" ;
+	byte TEMP_QC(TIME, LEVEL) ;
+		TEMP_QC:long_name = "QUALITY FLAG" ;
+		TEMP_QC:conventions = "OceanSITES reference table 2" ;
+		TEMP_QC:valid_min = 0b ;
+		TEMP_QC:valid_max = 9b ;
+		TEMP_QC:format = "%1d" ;
+		TEMP_QC:comment = "Quality flag for each Ocean temperature value" ;
+		TEMP_QC:default_value = 0b ;
+		TEMP_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		TEMP_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float TEMP_CAL(TIME, LEVEL) ;
+		TEMP_CAL:long_name = "SEA WATER TEMPERATURE CALIBRATED" ;
+		TEMP_CAL:standard_name = "sea_water_temperature" ;
+		TEMP_CAL:units = "degree_Celsius" ;
+		TEMP_CAL:valid_min = 99999.f ;
+		TEMP_CAL:valid_max = 99999.f ;
+		TEMP_CAL:format = "%6.3lf" ;
+		TEMP_CAL:_FillValue = 99999.f ;
+		TEMP_CAL:comment = "Ocean temperature calibrated" ;
+	float TEMP_ADJUSTED(TIME, LEVEL) ;
+		TEMP_ADJUSTED:long_name = "SEA WATER TEMPERATURE ADJUSTED" ;
+		TEMP_ADJUSTED:standard_name = "sea_water_temperature" ;
+		TEMP_ADJUSTED:units = "degree_Celsius" ;
+		TEMP_ADJUSTED:valid_min = 99999.f ;
+		TEMP_ADJUSTED:valid_max = 99999.f ;
+		TEMP_ADJUSTED:format = "%6.3lf" ;
+		TEMP_ADJUSTED:_FillValue = 99999.f ;
+		TEMP_ADJUSTED:comment = "Adjusted Ocean temperature" ;
+	float TEMP_ADJUSTED_ERROR(TIME, LEVEL) ;
+		TEMP_ADJUSTED_ERROR:long_name = "ERROR ON SEA WATER TEMPERATURE ADJUSTED" ;
+		TEMP_ADJUSTED_ERROR:standard_name = "sea_water_temperature" ;
+		TEMP_ADJUSTED_ERROR:units = "degree_Celsius" ;
+		TEMP_ADJUSTED_ERROR:valid_min = 99999.f ;
+		TEMP_ADJUSTED_ERROR:valid_max = 99999.f ;
+		TEMP_ADJUSTED_ERROR:format = "%6.3lf" ;
+		TEMP_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		TEMP_ADJUSTED_ERROR:comment = "Error on adjusted Ocean temperature" ;
+	byte TEMP_ADJUSTED_QC(TIME, LEVEL) ;
+		TEMP_ADJUSTED_QC:long_name = "QUALITY FLAG" ;
+		TEMP_ADJUSTED_QC:conventions = "OceanSITES reference table 2" ;
+		TEMP_ADJUSTED_QC:valid_min = 0b ;
+		TEMP_ADJUSTED_QC:valid_max = 9b ;
+		TEMP_ADJUSTED_QC:format = "%1d" ;
+		TEMP_ADJUSTED_QC:comment = "Quality flag applied on adjusted Ocean temperature" ;
+		TEMP_ADJUSTED_QC:default_value = 0b ;
+		TEMP_ADJUSTED_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		TEMP_ADJUSTED_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	char TEMP_ADJUSTED_HIST(STRING256) ;
+		TEMP_ADJUSTED_HIST:long_name = "ADJUSTED SEA WATER TEMPERATURE PROCESSING HISTORY" ;
+		TEMP_ADJUSTED_HIST:comment = "Adjusted Ocean temperature processing history" ;
+	float PSAL(TIME, LEVEL) ;
+		PSAL:long_name = "PRACTICAL SALINITY" ;
+		PSAL:standard_name = "sea_water_salinity" ;
+		PSAL:units = "psu" ;
+		PSAL:valid_min = -1.5f ;
+		PSAL:valid_max = 38.f ;
+		PSAL:format = "%6.3lf" ;
+		PSAL:_FillValue = 99999.f ;
+		PSAL:resolution = 0.001f ;
+		PSAL:comment = "Ocean salinity" ;
+		PSAL:coordinate = "TIME" ;
+	byte PSAL_QC(TIME, LEVEL) ;
+		PSAL_QC:long_name = "QUALITY FLAG" ;
+		PSAL_QC:conventions = "OceanSITES reference table 2" ;
+		PSAL_QC:valid_min = 0b ;
+		PSAL_QC:valid_max = 9b ;
+		PSAL_QC:format = "%1d" ;
+		PSAL_QC:comment = "Quality flag for each Ocean salinity value" ;
+		PSAL_QC:default_value = 0b ;
+		PSAL_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		PSAL_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float PSAL_CAL(TIME, LEVEL) ;
+		PSAL_CAL:long_name = "PRACTICAL SALINITY CALIBRATED" ;
+		PSAL_CAL:standard_name = "sea_water_salinity" ;
+		PSAL_CAL:units = "psu" ;
+		PSAL_CAL:valid_min = 99999.f ;
+		PSAL_CAL:valid_max = 99999.f ;
+		PSAL_CAL:format = "%6.3lf" ;
+		PSAL_CAL:_FillValue = 99999.f ;
+		PSAL_CAL:comment = "Ocean salinity calibrated" ;
+	float PSAL_ADJUSTED(TIME, LEVEL) ;
+		PSAL_ADJUSTED:long_name = "PRACTICAL SALINITY ADJUSTED" ;
+		PSAL_ADJUSTED:standard_name = "sea_water_salinity" ;
+		PSAL_ADJUSTED:units = "psu" ;
+		PSAL_ADJUSTED:valid_min = 99999.f ;
+		PSAL_ADJUSTED:valid_max = 99999.f ;
+		PSAL_ADJUSTED:format = "%6.3lf" ;
+		PSAL_ADJUSTED:_FillValue = 99999.f ;
+		PSAL_ADJUSTED:comment = "Adjusted Ocean salinity" ;
+	float PSAL_ADJUSTED_ERROR(TIME, LEVEL) ;
+		PSAL_ADJUSTED_ERROR:long_name = "ERROR ON PRACTICAL SALINITY ADJUSTED" ;
+		PSAL_ADJUSTED_ERROR:standard_name = "sea_water_salinity" ;
+		PSAL_ADJUSTED_ERROR:units = "psu" ;
+		PSAL_ADJUSTED_ERROR:valid_min = 99999.f ;
+		PSAL_ADJUSTED_ERROR:valid_max = 99999.f ;
+		PSAL_ADJUSTED_ERROR:format = "%6.3lf" ;
+		PSAL_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		PSAL_ADJUSTED_ERROR:comment = "Error on adjusted Ocean salinity" ;
+	byte PSAL_ADJUSTED_QC(TIME, LEVEL) ;
+		PSAL_ADJUSTED_QC:long_name = "QUALITY FLAG" ;
+		PSAL_ADJUSTED_QC:conventions = "OceanSITES reference table 2" ;
+		PSAL_ADJUSTED_QC:valid_min = 0b ;
+		PSAL_ADJUSTED_QC:valid_max = 9b ;
+		PSAL_ADJUSTED_QC:format = "%1d" ;
+		PSAL_ADJUSTED_QC:comment = "Quality flag applied on adjusted Ocean salinity" ;
+		PSAL_ADJUSTED_QC:default_value = 0b ;
+		PSAL_ADJUSTED_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		PSAL_ADJUSTED_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	char PSAL_ADJUSTED_HIST(STRING256) ;
+		PSAL_ADJUSTED_HIST:long_name = "ADJUSTED PRACTICAL SALINITY PROCESSING HISTORY" ;
+		PSAL_ADJUSTED_HIST:comment = "Adjusted Ocean salinity processing history" ;
+	float DOX2(TIME, LEVEL) ;
+		DOX2:long_name = "DISSOLVED OXYGEN" ;
+		DOX2:standard_name = "moles_of_oxygen_per_unit_mass_in_sea_water was dissolved_oxygen" ;
+		DOX2:units = "micromole/kg" ;
+		DOX2:valid_min = -1.5f ;
+		DOX2:valid_max = 38.f ;
+		DOX2:format = "%6.3lf" ;
+		DOX2:_FillValue = 99999.f ;
+		DOX2:resolution = 0.001f ;
+		DOX2:comment = "Ocean oxygen in micromole by kg" ;
+		DOX2:coordinate = "TIME" ;
+	byte DOX2_QC(TIME, LEVEL) ;
+		DOX2_QC:long_name = "QUALITY FLAG" ;
+		DOX2_QC:conventions = "OceanSITES reference table 2" ;
+		DOX2_QC:valid_min = 0b ;
+		DOX2_QC:valid_max = 9b ;
+		DOX2_QC:format = "%1d" ;
+		DOX2_QC:comment = "Quality flag for each Ocean oxygen in micromole by kg value" ;
+		DOX2_QC:default_value = 0b ;
+		DOX2_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		DOX2_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float DOX2_CAL(TIME, LEVEL) ;
+		DOX2_CAL:long_name = "DISSOLVED OXYGEN CALIBRATED" ;
+		DOX2_CAL:standard_name = "moles_of_oxygen_per_unit_mass_in_sea_water was dissolved_oxygen" ;
+		DOX2_CAL:units = "micromole/kg" ;
+		DOX2_CAL:valid_min = 99999.f ;
+		DOX2_CAL:valid_max = 99999.f ;
+		DOX2_CAL:format = "%6.3lf" ;
+		DOX2_CAL:_FillValue = 99999.f ;
+		DOX2_CAL:comment = "Ocean oxygen in micromole by kg calibrated" ;
+	float DOX2_ADJUSTED(TIME, LEVEL) ;
+		DOX2_ADJUSTED:long_name = "DISSOLVED OXYGEN ADJUSTED" ;
+		DOX2_ADJUSTED:standard_name = "moles_of_oxygen_per_unit_mass_in_sea_water was dissolved_oxygen" ;
+		DOX2_ADJUSTED:units = "micromole/kg" ;
+		DOX2_ADJUSTED:valid_min = 99999.f ;
+		DOX2_ADJUSTED:valid_max = 99999.f ;
+		DOX2_ADJUSTED:format = "%6.3lf" ;
+		DOX2_ADJUSTED:_FillValue = 99999.f ;
+		DOX2_ADJUSTED:comment = "Adjusted Ocean oxygen in micromole by kg" ;
+	float DOX2_ADJUSTED_ERROR(TIME, LEVEL) ;
+		DOX2_ADJUSTED_ERROR:long_name = "ERROR ON DISSOLVED OXYGEN ADJUSTED" ;
+		DOX2_ADJUSTED_ERROR:standard_name = "moles_of_oxygen_per_unit_mass_in_sea_water was dissolved_oxygen" ;
+		DOX2_ADJUSTED_ERROR:units = "micromole/kg" ;
+		DOX2_ADJUSTED_ERROR:valid_min = 99999.f ;
+		DOX2_ADJUSTED_ERROR:valid_max = 99999.f ;
+		DOX2_ADJUSTED_ERROR:format = "%6.3lf" ;
+		DOX2_ADJUSTED_ERROR:_FillValue = 99999.f ;
+		DOX2_ADJUSTED_ERROR:comment = "Error on adjusted Ocean oxygen in micromole by kg" ;
+	byte DOX2_ADJUSTED_QC(TIME, LEVEL) ;
+		DOX2_ADJUSTED_QC:long_name = "QUALITY FLAG" ;
+		DOX2_ADJUSTED_QC:conventions = "OceanSITES reference table 2" ;
+		DOX2_ADJUSTED_QC:valid_min = 0b ;
+		DOX2_ADJUSTED_QC:valid_max = 9b ;
+		DOX2_ADJUSTED_QC:format = "%1d" ;
+		DOX2_ADJUSTED_QC:comment = "Quality flag applied on adjusted Ocean oxygen in micromole by kg" ;
+		DOX2_ADJUSTED_QC:default_value = 0b ;
+		DOX2_ADJUSTED_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		DOX2_ADJUSTED_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	char DOX2_ADJUSTED_HIST(STRING256) ;
+		DOX2_ADJUSTED_HIST:long_name = "ADJUSTED DISSOLVED OXYGEN PROCESSING HISTORY" ;
+		DOX2_ADJUSTED_HIST:comment = "Adjusted Ocean oxygen in micromole by kg processing history" ;
+	float PRES(TIME, LEVEL) ;
+		PRES:long_name = "SEA WATER PRESSURE" ;
+		PRES:standard_name = "sea water pressure" ;
+		PRES:units = "decibard" ;
+		PRES:positive = "down" ;
+		PRES:format = "%7.2lf" ;
+		PRES:_FillValue = 99999.f ;
+		PRES:axis = "Z" ;
+		PRES:comment = "Pressure of the measurement" ;
+		PRES:coordinate = "LEVEL" ;
+	byte PRES_QC(TIME, LEVEL) ;
+		PRES_QC:long_name = "QUALITY FLAG" ;
+		PRES_QC:conventions = "OceanSITES reference table 2" ;
+		PRES_QC:valid_min = 0b ;
+		PRES_QC:valid_max = 9b ;
+		PRES_QC:format = "%1d" ;
+		PRES_QC:comment = "Quality flag for each level value" ;
+		PRES_QC:default_value = 0b ;
+		PRES_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		PRES_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	float DEPH(TIME, LEVEL) ;
+		DEPH:long_name = "SEA WATER DEPH" ;
+		DEPH:standard_name = "deph" ;
+		DEPH:units = "m" ;
+		DEPH:positive = "up" ;
+		DEPH:format = "%7.2lf" ;
+		DEPH:_FillValue = 99999.f ;
+		DEPH:axis = "Z" ;
+		DEPH:comment = "Deph of the measurement" ;
+		DEPH:coordinate = "LEVEL" ;
+	byte DEPH_QC(TIME, LEVEL) ;
+		DEPH_QC:long_name = "QUALITY FLAG" ;
+		DEPH_QC:conventions = "OceanSITES reference table 2" ;
+		DEPH_QC:valid_min = 0b ;
+		DEPH_QC:valid_max = 9b ;
+		DEPH_QC:format = "%1d" ;
+		DEPH_QC:comment = "Quality flag for each level value" ;
+		DEPH_QC:default_value = 0b ;
+		DEPH_QC:flag_values = "0, 1, 2, 3, 4, 5, 7, 8, 9" ;
+		DEPH_QC:flag_meanings = "no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value" ;
+	int STATION(TIME) ;
+		STATION:long_name = "STATION NUMBER" ;
+		STATION:format = "%4d" ;
+		STATION:comment = "Station number, a station could be have more than one cast" ;
+		STATION:coordinate = "TIME" ;
+	int CAST(TIME) ;
+		CAST:long_name = "CAST NUMBER" ;
+		CAST:format = "%4d" ;
+		CAST:comment = "Cast number" ;
+		CAST:coordinate = "TIME" ;
+
+// global attributes:
+		:cycle_mesure = "PIRATA-FR19-TEST" ;
+		:platform_name = "ANTEA" ;
+		:call_sign = "FNUR" ;
+		:wmo_platform_code = "35A8" ;
+		:project_name = "PIRATA" ;
+		:platform_code = "FNUR" ;
+		:type_instrument = "SBE911+" ;
+		:type_position = "GPS" ;
+		:number_instrument = "11P928" ;
+		:data_type = "profile" ;
+		:data_mode = "N/A" ;
+		:time_coverage_start = "2009-06-13T09:00:00Z" ;
+		:time_coverage_end = "2009-07-23T08:00:00Z" ;
+		:netcdf_version = "3.6" ;
+		:conventions = "OceanSITES 1.1, CF1.4" ;
+		:date_update = "2010-06-09T15:55:30Z" ;
+		:data_restrictions = "N/A" ;
+		:pi_name = "Bernard Bourles" ;
+		:author = "Jacques Grelet" ;
+		:data_assembly_center = "N/A" ;
+		:processing_state = "2C+" ;
+		:comment = "N/A" ;
+data:
+
+ REFERENCE_DATE_TIME = "19500101000000" ;
+
+ DATE =
+  "00590617142032",
+  "00590618154702",
+  "00590619122703" ;
+
+ TIME = 21718.5975925926, 21719.6576620371, 21720.5187847222 ;
+
+ TIME_QC = 1, 1, 1 ;
+
+ LATITUDE = -0.0075, 0.00017, 0 ;
+
+ LONGITUDE = -22.98933, -12.99983, -20 ;
+
+ POSITION_QC = 1, 1, 1 ;
+
+ TEMP =
+  26.109, 26.108, 26.106, 26.107, 26.106, 26.105, 26.103, 26.098, 26.071, 
+    26.07, 26.034, _, _,
+  24.241, 24.241, 24.241, 24.271, 34.27, 24.27, 24.27, 24.221, 23.988, 
+    23.635, 23.513, 23.475, 23.419,
+  23.546, 23.546, 23.346, 22.221, 22.22, 22.199, 22.05, 22.001, 21.999, _, _, 
+    _, _ ;
+
+ TEMP_QC =
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  2, 2, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ TEMP_CAL =
+  26.11, 26.109, 26.107, 26.108, 26.107, 26.106, 26.104, 26.099, 26.072, 
+    26.071, 26.035, _, _,
+  24.242, 24.242, 24.242, 24.272, 34.271, 24.271, 24.271, 24.222, 23.989, 
+    23.636, 23.514, 23.476, 23.42,
+  23.547, 23.547, 23.347, 22.222, 22.221, 22.2, 22.051, 22.002, 22, _, _, _, _ ;
+
+ TEMP_ADJUSTED =
+  26.111, 26.11, 26.108, 26.109, 26.108, 26.107, 26.105, 26.1, 26.073, 
+    26.072, 26.036, _, _,
+  24.242, 24.242, 24.242, 24.272, 34.271, 24.271, 24.271, 24.222, 23.989, 
+    23.636, 23.514, 23.476, 23.42,
+  23.547, 23.547, 23.347, 22.222, 22.221, 22.2, 22.051, 22.002, 22, _, _, _, _ ;
+
+ TEMP_ADJUSTED_ERROR =
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ TEMP_ADJUSTED_QC =
+  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0,
+  2, 2, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ TEMP_ADJUSTED_HIST = "" ;
+
+ PSAL =
+  36.371, 36.371, 36.371, 36.371, 36.371, 36.371, 36.371, 36.37, 36.37, 
+    36.369, 36.368, _, _,
+  35.806, 35.806, 35.806, 35.806, 55.806, 35.806, 35.805, 35.805, 35.811, 
+    35.816, 35.818, 35.819, 35.822,
+  35.806, 35.806, 35.806, 35.809, 35.81, 35.805, 35.802, 35.8, 35.789, _, _, 
+    _, _ ;
+
+ PSAL_QC =
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  2, 2, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ PSAL_CAL =
+  36.372, 36.372, 36.372, 36.372, 36.372, 36.372, 36.372, 36.371, 36.371, 
+    36.37, 36.369, _, _,
+  35.807, 35.807, 35.807, 35.807, 55.807, 35.807, 35.806, 35.806, 35.812, 
+    35.817, 35.819, 35.82, 35.823,
+  35.807, 35.807, 35.807, 35.81, 35.811, 35.806, 35.803, 35.801, 35.79, _, _, 
+    _, _ ;
+
+ PSAL_ADJUSTED =
+  36.373, 36.373, 36.373, 36.373, 36.373, 36.373, 36.373, 36.372, 36.372, 
+    36.371, 36.37, _, _,
+  35.807, 35.807, 35.807, 35.807, 55.807, 35.807, 35.806, 35.806, 35.812, 
+    35.817, 35.819, 35.82, 35.823,
+  35.807, 35.807, 35.807, 35.81, 35.811, 35.806, 35.803, 35.801, 35.79, _, _, 
+    _, _ ;
+
+ PSAL_ADJUSTED_ERROR =
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ PSAL_ADJUSTED_QC =
+  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0,
+  2, 2, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ PSAL_ADJUSTED_HIST = "" ;
+
+ DOX2 =
+  196.516, 195.309, 195.605, 195.497, 195.79, 195.321, 195.354, 195.493, 
+    195.14, 195.211, 195.51, _, _,
+  206.492, 206.492, 206.492, 206.396, 206.329, 205.842, 905.953, 204.561, 
+    201.971, 201.399, 201.018, 200.576, 200.069,
+  206.492, 206.492, 206.39, 206.256, 206.329, 205.565, 203.123, 199.345, 
+    196.567, _, _, _, _ ;
+
+ DOX2_QC =
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  2, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ DOX2_CAL =
+  196.517, 195.31, 195.606, 195.498, 195.791, 195.322, 195.355, 195.494, 
+    195.141, 195.212, 195.511, _, _,
+  206.493, 206.493, 206.493, 206.397, 206.33, 205.843, 905.954, 204.562, 
+    201.972, 201.4, 201.019, 200.577, 200.07,
+  206.493, 206.493, 206.391, 206.257, 206.33, 205.566, 203.124, 199.346, 
+    196.568, _, _, _, _ ;
+
+ DOX2_ADJUSTED =
+  196.518, 195.311, 195.607, 195.499, 195.792, 195.323, 195.356, 195.495, 
+    195.142, 195.213, 195.512, _, _,
+  206.493, 206.493, 206.493, 206.397, 206.33, 205.843, 905.954, 204.562, 
+    201.972, 201.4, 201.019, 200.577, 200.07,
+  206.493, 206.493, 206.391, 206.257, 206.33, 205.566, 203.124, 199.346, 
+    196.568, _, _, _, _ ;
+
+ DOX2_ADJUSTED_ERROR =
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _,
+  _, _, _, _, _, _, _, _, _, _, _, _, _ ;
+
+ DOX2_ADJUSTED_QC =
+  5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0,
+  2, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ DOX2_ADJUSTED_HIST = "" ;
+
+ PRES =
+  3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, _, _,
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+  0, 1, 2, 3, 4, 5, 6, 7, 8, _, _, _, _ ;
+
+ PRES_QC =
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ DEPH =
+  2.983498, 3.977988, 4.972472, 5.966952, 6.961427, 7.955898, 8.950363, 
+    9.944824, 10.93928, 11.93373, 12.92818, _, _,
+  0, 0.9945041, 1.989003, 2.983498, 3.977988, 4.972472, 5.966952, 6.961427, 
+    7.955898, 8.950363, 9.944824, 10.93928, 11.93373,
+  0, 0.9945041, 1.989003, 2.983498, 3.977988, 4.972472, 5.966952, 6.961427, 
+    7.955898, _, _, _, _ ;
+
+ DEPH_QC =
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+  2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ;
+
+ STATION = 1, 2, 4 ;
+
+ CAST = 1, 2, 4 ;
+}

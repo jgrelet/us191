@@ -1,0 +1,101 @@
+* Sea-Bird SBE 9 Data File:
+* FileName = C:\seasoft\pirata-fr18\data\fr18001.dat
+* Software Version Seasave Win32 V 5.38
+* Temperature SN = 2040
+* Conductivity SN = 1548
+* Number of Bytes Per Scan = 41
+* Number of Voltage Words = 4
+* Number of Scans Averaged by the Deck Unit = 1
+* Append System Time to Every Scan
+* System UpLoad Time = Sep 04 2008 14:55:50
+* NMEA Latitude = 00  0.610 N
+* NMEA Longitude = 000  0.050 W
+* NMEA UTC (Time) = 14:55:49
+* Store Lat/Lon Data = Append to Every Scan
+** Ship:    ANTEA 
+** Cruise:   PIRATA-FR18 
+** Station:    1
+** Latitude:   
+** Longitude:  
+** Date: 
+** Heure: 
+** Commentaire: 
+# nquan = 10
+# nvalues = 2004                        
+# units = specified
+# name 0 = prDM: Pressure, Digiquartz [db]
+# name 1 = t090C: Temperature [ITS-90, deg C]
+# name 2 = t190C: Temperature, 2 [ITS-90, deg C]
+# name 3 = sbeox0Mm/Kg: Oxygen, SBE 43 [umol/Kg]
+# name 4 = sbeox1Mm/Kg: Oxygen, SBE 43, 2 [umol/Kg]
+# name 5 = nbin: Scans Per Bin
+# name 6 = sal00: Salinity [PSU]
+# name 7 = sal11: Salinity, 2 [PSU]
+# name 8 = sigma-é00: Density [sigma-theta, Kg/m^3]
+# name 9 = svCM: Sound Velocity [Chen-Millero, m/s]
+# span 0 =      3.000,   2006.000       
+# span 1 =     3.5219,    25.9590       
+# span 2 =     3.5224,    25.9599       
+# span 3 =     70.686,    241.281       
+# span 4 =     71.203,    243.435       
+# span 5 =          6,         71       
+# span 6 =    34.4959,    35.8724       
+# span 7 =    34.4954,    35.8702       
+# span 8 =    23.2680,    27.8192       
+# span 9 =    1482.25,    1537.10       
+# interval = decibars: 1                
+# start_time = Sep 04 2008 14:55:50
+# bad_flag = -9.990e-29
+# sensor 0 = Frequency  0  temperature, primary, 2040, 25/01/2008
+# sensor 1 = Frequency  1  conductivity, primary, 1548, 25/01/2008, cpcor = -9.5700e-08
+# sensor 2 = Frequency  2  pressure, 0419, 22/02/07
+# sensor 3 = Frequency  3  temperature, secondary, 2042, 18/03/2008
+# sensor 4 = Frequency  4  conductivity, secondary, 1550, 25/01/2008, cpcor = -9.5700e-08
+# sensor 5 = Extrnl Volt  0  Oxygen, SBE, primary, 683, 22/02/2008
+# sensor 6 = Extrnl Volt  6  Oxygen, SBE, secondary, 323, 22/02/2008
+# datcnv_date = Sep 05 2008 09:56:02, 7.12
+# datcnv_in = c:\seasoft\pirata-fr18\data\fr18001.dat c:\seasoft\pirata-fr18\data\fr18001.con
+# datcnv_skipover = 0
+# wildedit_date = Sep 05 2008 09:58:59, 7.12
+# wildedit_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# wildedit_pass1_nstd = 2.0
+# wildedit_pass2_nstd = 20.0
+# wildedit_pass2_mindelta = 0.000e+000
+# wildedit_npoint = 100
+# wildedit_vars = prDM t090C t190C c0S/m c1S/m sbeox0V sbeox1V
+# wildedit_excl_bad_scans = yes
+# alignctd_date = Sep 05 2008 09:59:03, 7.12
+# alignctd_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# alignctd_adv = c1S/m 0.073, sbeox0V 2.000, sbeox1V 2.000                                                                                                                                                                           
+# celltm_date = Sep 05 2008 09:59:06, 7.12
+# celltm_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# celltm_alpha = 0.0300, 0.0300
+# celltm_tau = 7.0000, 7.0000
+# celltm_temp_sensor_use_for_cond = primary, secondary
+# filter_date = Sep 05 2008 09:59:10, 7.12
+# filter_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# filter_low_pass_tc_A = 0.030
+# filter_low_pass_tc_B = 0.150
+# filter_low_pass_A_vars = c0S/m c1S/m
+# filter_low_pass_B_vars = prDM
+# loopedit_date = Sep 05 2008 09:59:13, 7.12
+# loopedit_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# loopedit_minVelocity = 0.250                                                                                            
+# loopedit_surfaceSoak: do not remove                                                                                     
+# loopedit_excl_bad_scans = yes
+# Derive_date = Sep 05 2008 09:59:18, 7.12
+# Derive_in = c:\seasoft\pirata-fr18\data\fr18001.cnv c:\seasoft\pirata-fr18\data\fr18001.con
+# derive_time_window_docdt = seconds: 2
+# binavg_date = Sep 05 2008 09:59:25, 7.12
+# binavg_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# binavg_bintype = decibars
+# binavg_binsize = 1
+# binavg_excl_bad_scans = yes
+# binavg_skipover = 0
+# binavg_surface_bin = yes, min = 0.000, max = 2.000, value = 0.000
+# Derive_date = Sep 05 2008 09:59:29, 7.12
+# Derive_in = c:\seasoft\pirata-fr18\data\fr18001.cnv c:\seasoft\pirata-fr18\data\fr18001.con
+# strip_date = Sep 05 2008 09:59:34, 7.12
+# strip_in = c:\seasoft\pirata-fr18\data\fr18001.cnv
+# file_type = binary
+*END*

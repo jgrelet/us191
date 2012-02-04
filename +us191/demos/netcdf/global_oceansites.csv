@@ -1,0 +1,97 @@
+% C:\Documents and Settings\jgrelet\Mes documents\MATLAB\toolbox\+us191\demos\netcdf\global_oceansites.csv:  0 members & 0 lines with data; VERSION = 0.000
+%
+%
+%
+$DIMENSIONS$
+#;key__;dimlen;unlimited;#
+#;char;integer;logical;#
+#;TIME;;0;#
+#;LEVEL;;0;#
+#;LATITUDE;;0;#
+#;LONGITUDE;;0;#
+#;POSITION;;0;#
+#;STRING256;256;0;#
+#;STRING14;14;0;#
+#;STRING8;8;0;#
+#;STRING4;4;0;#
+#;N1;1;0;#
+%
+$VARIABLES$
+#;key__;dimension__;type__;long_name;standard_name;units;conventions;positive;valid_min;valid_max;format;FillValue_;epic_code;axis;resolution;comment;default_value;coordinate;flag_values;flag_meanings;#
+#;char;cell;char;char;char;char;char;char;double;double;char;double;double;char;double;char;double;char;char;char;#
+#;REFERENCE_DATE_TIME;'STRING14';char;ORIGIN OF TIME;;;yyyymmddHHMMSS;;;;;;;;;Reference date for julian days origin;;;;;#
+#;DATE;'TIME','STRING14';char;DATE OF MAINS INSTRUMENT MEASUREMENT;;;yyyymmddHHMMSS;;;;;;;T;;This is the original data describing the date, it must not be lost;;TIME;;;#
+#;TIME;'TIME';double;DECIMAL JULIAN DAY (UTC) OF EACH MEASUREMENT;time;days since 1950-01-01T00:00:00Z;Relative julian days with decimal part (as parts of the day) from REFERENCE_DATE_TIME;;0;90000;%9.5lf;;601;T;;Julian day of the measurement;;TIME;;;#
+#;TIME_QC;'TIME';byte;QUALITY FLAG OF TIME;;;OceanSITES reference table 2;;0;9;%1d;;;;;Quality flag for each TIME value.;0;;0, 1, 2, 3, 4, 5, 7, 8, 9;no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value;#
+#;LATITUDE;'LATITUDE';float;LATITUDE OF THE MEASUREMENT;latitude;degree_north;;;-90;90;%+8.4lf;99999;500;Y;;Latitude of the measurement (decimal);;LATITUDE;;;#
+#;LONGITUDE;'LONGITUDE';float;LONGITUDE OF THE MEASUREMENT;longitude;degree_east;;;-180;180;%+9.4lf;99999;501;X;;Longitude of the measurement (decimal);;LONGITUDE;;;#
+#;POSITION_QC;'POSITION';byte;QUALITY FLAG OF POSITION;;;OceanSITES reference table 2;;0;9;%1d;;;;;Quality flag for each LATITUDE and LONGITUDE value.;0;;0, 1, 2, 3, 4, 5, 7, 8, 9;no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value;#
+#;{station};'TIME';int;STATION NUMBER;;;;;;;%4d;;;;;Station number, a station could be have more than one cast;;TIME;;;#
+#;{cast};'TIME';int;CAST NUMBER;;;;;;;%4d;;;;;Cast number;;TIME;;;#
+#;{level};'TIME','LEVEL';float;;;;;;;;;;;;;Number of level measurments;;;;;#
+#;{level}_QC;'TIME','LEVEL';byte;QUALITY FLAG;;;OceanSITES reference table 2;;0;9;%1d;;;;;Quality flag for each level value;0;;0, 1, 2, 3, 4, 5, 7, 8, 9;no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value;#
+#;{variable};'TIME','LEVEL';float;;;;;;;;;;;;;{comment};;;;;#
+#;{variable}_QC;'TIME','LEVEL';byte;QUALITY FLAG;;;OceanSITES reference table 2;;0;9;%1d;;;;;Quality flag for each {comment} value;0;;0, 1, 2, 3, 4, 5, 7, 8, 9;no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value;#
+#;{variable}_CAL;'TIME','LEVEL';float;{long_name} CALIBRATED;{standard_name};{units};;;99999;99999;%6.3lf;99999;;;;{comment} calibrated;;;;;#
+#;{variable}_ADJUSTED;'TIME','LEVEL';float;{long_name} ADJUSTED;{standard_name};{units};;;99999;99999;%6.3lf;99999;;;;Adjusted {comment};;;;;#
+#;{variable}_ADJUSTED_ERROR;'TIME','LEVEL';float;ERROR ON {long_name} ADJUSTED;{standard_name};{units};;;99999;99999;%6.3lf;99999;;;;Error on adjusted {comment};;;;;#
+#;{variable}_ADJUSTED_QC;'TIME','LEVEL';byte;QUALITY FLAG;;;OceanSITES reference table 2;;0;9;%1d;;;;;Quality flag applied on adjusted {comment};0;;0, 1, 2, 3, 4, 5, 7, 8, 9;no_qc_performed, good_data, probably_good_data, bad_data_that_are_potentially_correctable, bad_data, value_changed, not_used, nominal_value, interpolated_value, missing_value;#
+#;{variable}_ADJUSTED_HIST;'STRING256';char;ADJUSTED {long_name} PROCESSING HISTORY;;;;;;;;;;;;Adjusted {comment} processing history;;;;;#
+%
+$ATTRIBUTES$
+#;key__;name;conventions;uicontrolType;string;value;length;height;horizontalAlignment;comment;#
+#;char;char;char;char;char;float;float;float;char;char;#
+#;cycle_mesure;CYCLE MESURE :;;edit;;;0.11;0.029999999;right;Cruise or travel name;#
+#;platform_name;PLATFORM NAME :;;edit;;;0.11;0.029999999;right;Ship or platform name;#
+#;call_sign;CALL SIGN :;;edit;;;0.11;0.029999999;right;Call sign number;#
+#;wmo_platform_code;WMO PLATFORM CODE :;;edit;;;0.11;0.029999999;right;WMO (World Meteorological Organization) identifier (unique);#
+#;project_name;PROJECT NAME :;;edit;;;0.11;0.029999999;right;Name of project which operates the program, ex: ORE-SSS;#
+#;platform_code;PLATFORM CODE :;;edit;;;0.11;0.029999999;right;Platform unique code within OceanSITES project;#
+#;type_instrument;TYPE INSTRUMENT :;;popupmenu;CTD|XBT|ADCP|METEO|TSG|COASTAL;1;0.11;0.029999999;right;Instrument model number;#
+#;type_position;TYPE_POSITION:;;popupmenu;GPS|GPS DIFFERENTIAL|ARGOS|INTERPOLATE|MANUAL|NONE|N/A;1;0.1;0.02;right;Description of navigation system;#
+#;number_instrument;NUMBER INSTRUMENT :;;edit;;;0.11;0.029999999;right;Instrument serial number;#
+#;data_type;DATA TYPE :;;popupmenu;TRAJECTORY|PROFILE|TIME_SERIES;1;0.11;0.029999999;right;Describe data type contained in file, eg: TRAJECTORY, PROFIL or TIME_SERIE;#
+#;data_mode;DATA MODE :;;popupmenu;Delayed mode data|Real time data;1;0.11;0.029999999;right;Indicate if the file contains real time or delayed mode data;#
+#;time_coverage_start;TIME COVERAGE END :;yyyy-mm-ddThh-mn-ssZ;edit;;;0.11;0.029999999;right;Date of first measurements;#
+#;time_coverage_end;TIME COVERAGE START :;yyyy-mm-ddThh-mn-ssZ;edit;;;0.11;0.029999999;right;Date of last measurements;#
+#;timezone;TIMEZONE :;;edit;GMT;;0.11;0.029999999;right;Timezone GMT = UTC;#
+#;format_version;FORMAT VERSION :;;edit;1.1;;0.11;0.029999999;right;OceanSITES format version;#
+#;netcdf_version;NETCDF VERSION :;;popupmenu;3.6;1;0.11;0.029999999;right;File format version;#
+#;conventions;CONVENTIONS :;;popupmenu;OceanSITES 1.1, CF1.4|GOSUD 1.6,CF 1.4;1;0.11;0.029999999;right;NetCDF file format conventions;#
+#;date_creation;DATE CREATION :;yyyy-mm-ddThh-mn-ssZ;edit;;;0.11;0.029999999;right;Date and time of file creation, format: YYYYMMDDHHMISS;#
+#;date_update;DATE UPDATE :;yyyy-mm-ddThh-mn-ssZ;edit;;;0.11;0.029999999;right;Date and time of file update, format: YYYYMMDDHHMISS;#
+#;data_restrictions;DATA RESTRICTIONS:;;edit;NONE;;0.11;0.029999999;right;Restriction on use for these data;#
+#;pi_name;PI NAME :;Firstname Surname;edit;;;0.11;0.029999999;right;Name of principal investigator in charge of the data, ex: IRD,CNRS or IFREMER;#
+#;author;AUTHOR :;Firstname Surname;edit;;;0.11;0.029999999;right;Name of the person responsible for the creation of the dataset.;#
+#;data_assembly_center;DATA CENTRE :;;popupmenu;IRD|GENAVIR|SHOM|CNRS;1;0.11;0.029999999;right;Acquisition data centre, ex: SHOM,IRD,GENAVIR,CNRS,...;#
+#;processing_center;PROCESSING CENTRE :;;popupmenu;IRD|ORE-SSS|CORIOLIS/IRD|CORIOLIS/SISMER;1;0.11;0.029999999;right;Processing data centre, ex: ORE-SSS,CORIOLIS,SISMER,...;#
+#;institution;INSTITUTION :;;popupmenu;IRD|GENAVIR|SHOM|CNRS;1;0.11;0.029999999;right;Specifies institution where the original data was produced.;#
+#;processing_state;PROCESSING STATES :;;popupmenu;0A|1A|2B|2B+|2C|2C+|3B;1;0.11;0.029999999;right;0A: DONNEE BRUTE|1A: DONNEE LOCALISEE;#
+#;history;HISTORY :;;edit;;;0.11;0.029999999;right;Provides an audit trail for modifications to the original data. It should contain a separate line for each modification, with each line beginning with a timestamp, and including user name,  modification name, and modification arguments. The time stamp should follow the format outlined in the note on time formats below.;#
+#;comment;COMMENT :;;edit;;;0.11;0.029999999;right;Miscellaneous information about the data or methods used to produce it. Any free-format text is appropriate.;#
+%
+$PARAMETERS$
+#;key__;dimension__;type__;function__;long_name;standard_name;units;conventions;positive;valid_min;valid_max;format;FillValue_;epic_code;axis;resolution;comment;default_value;coordinate;flag_values;flag_meanings;#
+#;char;cell;char;char;char;char;char;char;char;double;double;char;double;double;char;double;char;double;char;char;char;#
+#;STATION;'TIME';int;profile;STATION NUMBER;;;;;;;%4d;;;;;Station number, a station could be have more than one cast;;TIME;;;#
+#;CAST;'TIME';int;profile;CAST NUMBER;;;;;;;%4d;;;;;Cast number;;TIME;;;#
+#;DEPH;'TIME','LEVEL';float;level;SEA WATER DEPH;deph;m;;up;;;%7.2lf;99999;;Z;;Deph of the measurement;;LEVEL;;;#
+#;PRES;'TIME','LEVEL';float;level;SEA WATER PRESSURE;sea water pressure;decibard;;down;;;%7.2lf;99999;;Z;;Pressure of the measurement;;LEVEL;;;#
+#;TEMP;'TIME','LEVEL';float;physical;SEA WATER TEMPERATURE;sea_water_temperature;degree_Celsius;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean temperature;;TIME;;;#
+#;PSAL;'TIME','LEVEL';float;physical;PRACTICAL SALINITY;sea_water_salinity;psu;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean salinity;;TIME;;;#
+#;DOX2;'TIME','LEVEL';float;physical;DISSOLVED OXYGEN;moles_of_oxygen_per_unit_mass_in_sea_water was dissolved_oxygen;micromole/kg;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean oxygen in micromole by kg;;TIME;;;#
+#;DENS;'TIME','LEVEL';float;physical;DENSITY;sea_water_density;kg/m3;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean density;;TIME;;;#
+#;SVEL;'TIME','LEVEL';float;physical;SOUND VELOCITY;sea_water_velocity;meter/second;;;1350;1600;%7.2lf;99999;;;0.001;Ocean sound velocity;;TIME;;;#
+#;DRYT;'TIME','LEVEL';float;physical;AIR TEMPERATURE;air_temperature;degree_Celsius;;;-1.5;38;%6.3lf;99999;;;0.001;Air temperature;;TIME;;;#
+#;WMSP;'TIME','LEVEL';float;physical;WIND SPEED - MAX AVER PER 2 MN;wind_speed;meter/second;;;0;200;%6.3lf;99999;;;0.001;Horizontal wind speed;;TIME;;;#
+#;WDIR;'TIME','LEVEL';float;physical;WIND DIRECTION REL. TRUE NORTH;wind_to_direction;degree;;;0;360;%5.1lf;99999;;;0.001;Horizontal wind speed;;TIME;;;#
+#;ATMS;'TIME','LEVEL';float;physical;ATMOSPHERIC PRESSURE - SEA LEV;air_pressure_at_sea_level;hectoPascal;;;940;1030;%8.3lf;99999;;;0.001;Atmospheric pressure at sea level;;TIME;;;#
+#;RELH;'TIME','LEVEL';float;physical;RELATIVE HUMIDITY;relative_humidity;%;;;0;100;%6.1lf;99999;;;0.001;Relative humidity;;TIME;;;#
+#;NSCT;'TIME','LEVEL';float;physical;CURRENT NORTH COMPONENT;;cm/second;;;-100;100;%7.3lf;99999;;;0.01;Current north;;TIME;;;#
+#;EWCT;'TIME','LEVEL';float;physical;CURRENT EAST COMPONENT;;cm/second;;;-100;100;%7.3lf;99999;;;0.02;Current east;;TIME;;;#
+#;SSJT;'TIME','LEVEL';float;physical;SEA SURFACE WATER JACKET TEMPERATURE;sea_water_temperature;degree_Celsius;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean temperature;;TIME;;;#
+#;SSTP;'TIME','LEVEL';float;physical;SEA SURFACE WATER TEMPERATURE;sea_water_temperature;degree_Celsius;;;-1.5;38;%6.3lf;99999;;;0.001;Sea surface Ocean temperature;;TIME;;;#
+#;SSPS;'TIME','LEVEL';float;physical;SEA SURFACE PRACTICAL SALINITY;sea_water_salinity;psu;;;-1.5;38;%6.3lf;99999;;;0.001;Ocean salinity;;TIME;;;#
+#;PCO2;'TIME','LEVEL';float;physical;CO2 PART. PRES IN DRY/WET GAS;;microatmosphere;;;100;700;%7.3lf;99999;;;0.001;Ocean salinity;;TIME;;;#
+#;FLU2;'TIME','LEVEL';float;physical;FLUORESCENCE;;milligram/m3;;;0;1;%8.4lf;99999;;;0.001;Ocean salinity;;TIME;;;#
+#;TUR3;'TIME','LEVEL';float;physical;LIGHT TRANSMISSION;;%;;;0;100;%6.2lf;99999;;;0.001;Ocean salinity;;TIME;;;#

@@ -1,0 +1,26 @@
+netcdf attget {
+dimensions:
+	x = 1 ;
+	y = 1 ;
+variables:
+	double x_db(y, x) ;
+		x_db:test_double_att = 3.14159 ;
+		x_db:test_float_att = 3.1416f ;
+		x_db:test_int_att = 3 ;
+		x_db:test_short_att = 5s, 7s ;
+		x_db:test_uchar_att = 100b ;
+		x_db:test_schar_att = -100b ;
+		x_db:test_text_att = "abcdefghijklmnopqrstuvwxyz" ;
+		x_db:new_att = "0" ;
+	double z_double(y, x) ;
+
+// global attributes:
+		:test_double_att = 3.14159 ;
+data:
+
+ x_db =
+  _ ;
+
+ z_double =
+  _ ;
+}
