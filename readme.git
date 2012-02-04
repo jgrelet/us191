@@ -1,0 +1,29 @@
+Quick guide to setup git with Matlab and us191 package
+
+  Install git under windows or Linux:
+  http://git-scm.com/download
+
+  Setup ssh under windows:
+  $ ssh-keygen
+  to create yours ssh keys and paraphrase
+
+  go to ~/.ssh and copy your public key from id_rsa.pub file
+  to your github admin page: https://github.com/<user>/<repository>
+  SSH public keys tab.
+
+  ssh: git@github.com:jgrelet/us191.git
+  https: https://jgrelet@github.com/jgrelet/us191.git
+  git read only: git://github.com/jgrelet/us191.git
+
+  Test ssh connection :
+  $ ssh -vT git@github.com
+
+  help for ssh: http://help.github.com/ssh-issues/
+
+  Create your remote repository in github admin interface and
+  push your local copy:
+
+  $ git remote add origin git@github.com:jgrelet/us191.git
+  $ git push -u origin master
+
+  
