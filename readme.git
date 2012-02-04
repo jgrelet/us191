@@ -26,4 +26,6 @@ Quick guide to setup git with Matlab and us191 package
   $ git remote add origin git@github.com:jgrelet/us191.git
   $ git push -u origin master
 
-  
+  Matlab:
+  add git.m to your pathdef.m
+  see: https://github.com/manur/MATLAB-git
