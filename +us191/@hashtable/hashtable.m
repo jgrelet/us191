@@ -367,8 +367,8 @@ classdef hashtable < handle
       
       % display hyperlink help
       % ----------------------
-      fprintf('<a href="matlab:help datagui.hashtable">datagui.hashtable</a>\n\n');
-      fprintf('Package: datagui\n\n');
+      fprintf('<a href="matlab:help us191.hashtable">us191.hashtable</a>\n\n');
+      fprintf('Package: us191\n\n');
       fprintf('Properties:\n');
       fprintf('      Count:     %d\n',      self.Count);
       fprintf('    KeyType:    ''%s''\n',   self.KeyType);

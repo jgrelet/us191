@@ -172,7 +172,7 @@
 % $Id: netcdf.m 646 2012-01-09 20:46:39Z jgrelet $
 
 %% COPYRIGHT & LICENSE
-%  Copyright 2009 - IRD US191, all rights reserved.
+%  Copyright 2009-2001 - IRD US191, all rights reserved.
 %
 %  This file is part of us191 Matlab package.
 %

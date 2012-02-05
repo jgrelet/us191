@@ -13,7 +13,7 @@ function theResult = ncload(theNetCDFFile, varargin)
 % $Id: ncload.m 600 2011-09-14 14:36:29Z jgrelet $
 
 %% COPYRIGHT & LICENSE
-%  Copyright 2009 - IRD US191, all rights reserved.
+%  Copyright 2009-2001 - IRD US191, all rights reserved.
 %
 %  This file is part of us191 Matlab package.
 %
@@ -28,10 +28,9 @@ function theResult = ncload(theNetCDFFile, varargin)
 %    GNU General Public License for more details.
 %
 %    You should have received a copy of the GNU General Public License
-%    along with Datagui; if not, write to the Free Software
+%    along with this program; if not, write to the Free Software
 %    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
 %    USA
-
 
 % create netcdf object, call uigetfile if no filename is given
 % ------------------------------------------------------------

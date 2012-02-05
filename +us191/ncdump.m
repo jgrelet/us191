@@ -18,7 +18,7 @@ function ncdump(theNetCdfFile, varargin)
 % $Id: ncdump.m 610 2011-12-14 13:02:04Z jgrelet $
 
 %% COPYRIGHT & LICENSE
-%  Copyright 2009 - IRD US191, all rights reserved.
+%  Copyright 2009-2001 - IRD US191, all rights reserved.
 %
 %  This file is part of us191 Matlab package.
 %
@@ -33,7 +33,7 @@ function ncdump(theNetCdfFile, varargin)
 %    GNU General Public License for more details.
 %
 %    You should have received a copy of the GNU General Public License
-%    along with Datagui; if not, write to the Free Software
+%    along with this program; if not, write to the Free Software
 %    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
 %    USA
 
