@@ -231,7 +231,7 @@ classdef netcdf < TestCase
       % Put a scale factor of 4 and add offset of 2.
       % data read back should be twice as large
       
-      ncfile = 'foo.nc';
+      ncfile = strcat(self.testroot, '/testdata/foo.nc');
       ncid = us191.netcdf('memory');
       ncid.AutoScale = true;
       ncid.Echo = false;
@@ -254,7 +254,7 @@ classdef netcdf < TestCase
       ncid.VARIABLES.data_2D.data__ = value;
       ncid.write(ncfile, 'NC_CLOBBER');
       
-      ncid = us191.netcdf('foo.nc');
+      ncid = us191.netcdf(strcat(self.testroot, '/testdata/foo.nc'), false);
       ncid.AutoAccess = true;
       
       output_data = ncid.VARIABLES.data_2D;
