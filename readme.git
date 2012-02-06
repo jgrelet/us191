@@ -4,13 +4,13 @@ Quick guide to setup git with Matlab and us191 package
   http://git-scm.com/download
 
   Initialize git:
-    git config --global user.name "jgrelet"
-    git config --global user.name "Jacques.Grelet@
-    git config --global color.diff auto
-    git config --global color.status auto
-    git config --global color.branch auto
-    git config --global core.autocrlf input
-    vi
+    $ git config --global user.name "jgrelet"
+    $ git config --global user.name "Jacques.Grelet@
+    $ git config --global color.diff auto
+    $ git config --global color.status auto
+    $ git config --global color.branch auto
+    $ git config --global core.autocrlf input
+    $ vi
     vi ~/.gitconfig
   add:
     [alias]
