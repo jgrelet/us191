@@ -10,8 +10,7 @@ Quick guide to setup git with Matlab and us191 package
     $ git config --global color.status auto
     $ git config --global color.branch auto
     $ git config --global core.autocrlf input
-    $ vi
-    vi ~/.gitconfig
+    $ vi ~/.gitconfig
   add:
     [alias]
         ci = commit
